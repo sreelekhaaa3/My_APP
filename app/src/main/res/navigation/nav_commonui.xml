@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_commonui"
+    app:startDestination="@id/selectLanguage">
+
+    <fragment
+        android:id="@+id/selectRoleFragment"
+        android:name="in.jadu.anju.commonuis.SelectRoleFragment"
+        android:label="fragment_select_role"
+        tools:layout="@layout/fragment_select_role" />
+    <fragment
+        android:id="@+id/enterOtpFragment"
+        android:name="in.jadu.anju.commonuis.EnterOtpFragment"
+        android:label="fragment_enter_otp"
+        tools:layout="@layout/fragment_enter_otp" >
+        <action
+            android:id="@+id/action_enterOtpFragment_to_confirmOtpFragment"
+            app:destination="@id/confirmOtpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmOtpFragment"
+        android:name="in.jadu.anju.commonuis.ConfirmOtpFragment"
+        android:label="fragment_confirmotp"
+        tools:layout="@layout/fragment_confirmotp" >
+        <action
+            android:id="@+id/action_confirmOtpFragment_to_selectRoleFragment"
+            app:destination="@id/selectRoleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectLanguage"
+        android:name="in.jadu.anju.commonuis.SelectLanguageFragment"
+        android:label="SelectLanguage" >
+        <action
+            android:id="@+id/action_selectLanguage_to_enterOtpFragment"
+            app:destination="@id/enterOtpFragment" />
+    </fragment>
+</navigation>

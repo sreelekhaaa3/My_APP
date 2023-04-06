@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".commonuis.SelectRoleFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/iv_farmers"
+        android:text="@string/select_role"
+        android:textSize="20sp"
+        android:fontFamily="@font/lato_bold"
+        android:textColor="@color/primary_text_color"
+        android:layout_marginBottom="20dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_farmers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        android:src="@drawable/farmers"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_farmers"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline"
+        android:layout_margin="30dp"
+        android:text="@string/farmers_name"
+        android:textSize="25sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/lato_bold"
+        android:textAllCaps="false"
+        android:background="@drawable/langbuttondesign"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_buyers"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_farmers"
+        android:layout_margin="30dp"
+        android:background="@drawable/langbuttondesign"
+        android:text="@string/consumers_name"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:fontFamily="@font/lato_bold"
+        android:textAllCaps="false"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

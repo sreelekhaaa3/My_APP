@@ -11,6 +11,18 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+<!--        &lt;!&ndash; Customize your theme here. -->
+        <item name="android:fontFamily">@font/lato_bold</item>
+        <item name="fontFamily">@font/lato_bold</item>
+    </style>
+
+    <style name="TextViewFont" parent="android:Widget.TextView">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="TextInputTheme" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/text_input_box_stroke</item>
+        <item name="hintTextColor">@color/primary_text_color</item>
+        <item name="android:textColorHint">@color/hint_text_color_dark_ui</item>
     </style>
 </resources>

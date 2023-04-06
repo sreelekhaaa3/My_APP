@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        android:src="@drawable/pray_namaste"
+        />
+
+    <!--   create a guideline that and put a id and place the image above it-->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.14" />
+
+    <!--    create a text view and place it below this guideline-->
+    <TextView
+        android:id="@+id/tv_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="नमस्ते"
+        android:fontFamily="@font/lato"
+        android:textColor="@color/primary_text_color"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline" />
+
+    <!--    create a app compact image view thaat is below tv_welcome-->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_select_language"
+        android:layout_width="256dp"
+        android:layout_height="256dp"
+        android:src="@drawable/select_language_png"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_select_language" />
+
+    <!--    text view select your language-->
+    <TextView
+        android:id="@+id/tv_select_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="अपनी भासा चुने / Select your language"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/lato"
+        android:textColor="@color/primary_text_color"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_welcome" />
+
+    <!--    create two button and place it below the text view having hindi and english-->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_hindi"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_margin="30dp"
+        android:gravity="center"
+        android:background="@drawable/langbuttondesign"
+        android:fontFamily="@font/lato_bold"
+        android:text="हिंदी"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toStartOf="@id/btn_english"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_select_language" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_english"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:text="English"
+        android:textAllCaps="false"
+        android:background="@drawable/langbuttondesign"
+        android:layout_margin="30dp"
+        android:fontFamily="@font/lato_bold"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_hindi"
+        app:layout_constraintTop_toBottomOf="@id/iv_select_language" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

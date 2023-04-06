@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AnJu</string>
+    <string name="welcome">"नमस्ते "</string>
+    <string name="select_role">"अपना भूमिका चुनें"</string>
+    <string name="farmers_name">किसान</string>
+    <string name="consumers_name">उपभोक्ता</string>
+    <string name="enter_phone">कृपया अपना नंबर दर्ज करें</string>
+<!--    get top-->
+    <string name="verify">ओटीपी प्राप्त करें</string>
+    <string name="phone_number">अपना नंबर दर्ज करें</string>
+    <string name="six_digit_otp">6 अंकों का ओटीपी दर्ज करें</string>
+</resources>
