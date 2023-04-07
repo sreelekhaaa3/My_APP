@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import `in`.jadu.anju.commonuis.viewmodels.PhoneVerificationViewModel
 import `in`.jadu.anju.kvstorage.KvStorage
 import javax.inject.Singleton
 
@@ -15,6 +16,12 @@ object Modules {
     @Provides
     fun kvStorage(application:Application):KvStorage{
         return KvStorage(application.applicationContext)
+    }
+
+    @Provides
+    @Singleton
+    fun providePhoneVerificationViewModelFactory(): PhoneVerificationViewModel {
+        return PhoneVerificationViewModel()
     }
 
 }

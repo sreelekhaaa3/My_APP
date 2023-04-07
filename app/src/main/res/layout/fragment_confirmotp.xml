@@ -70,6 +70,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
+                android:gravity="center"
+                android:maxLength="1"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -90,6 +92,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
+                android:gravity="center"
+                android:maxLength="1"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -110,6 +114,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
+                android:gravity="center"
+                android:maxLength="1"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -130,6 +136,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
+                android:gravity="center"
+                android:maxLength="1"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -149,7 +157,10 @@
                 android:id="@+id/et_otp_05"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:gravity="center"
+                android:maxLength="1"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
@@ -169,6 +180,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
+                android:maxLength="1"
+                android:gravity="center"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -194,6 +207,36 @@
         app:layout_constraintTop_toBottomOf="@id/ll_otp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        />
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_otp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.02"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/progress"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_error"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_verify"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias=".4"
+        android:textColor="@color/ErrorColor"
+        android:gravity="center"
+        android:layout_margin="15dp"
+        android:text="* Something Went Wrong! Please Try After Some Time"
         />
 
 

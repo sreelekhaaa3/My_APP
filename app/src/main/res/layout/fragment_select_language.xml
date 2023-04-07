@@ -73,8 +73,8 @@
         android:text="हिंदी"
         android:textColor="@color/white"
         android:textSize="25sp"
-        app:layout_constraintEnd_toStartOf="@id/btn_english"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_english"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_select_language" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -88,6 +88,8 @@
         android:fontFamily="@font/lato_bold"
         android:textColor="@color/white"
         android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_hindi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_hindi"
         app:layout_constraintTop_toBottomOf="@id/iv_select_language" />

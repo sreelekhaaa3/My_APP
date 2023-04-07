@@ -9,6 +9,7 @@
     <string name="verify">Get OTP</string>
     <string name="phone_number">Enter Your Number</string>
     <string name="six_digit_otp">Enter 6 Digit Otp</string>
+    <string name="InvalidOtp">Otp Entered is Invalid ! Try Again</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

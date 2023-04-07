@@ -3,37 +3,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_commonui"
+    android:label="fragment_o"
     app:startDestination="@id/selectLanguage">
 
     <fragment
         android:id="@+id/selectRoleFragment"
         android:name="in.jadu.anju.commonuis.SelectRoleFragment"
         android:label="fragment_select_role"
-        tools:layout="@layout/fragment_select_role" />
-    <fragment
-        android:id="@+id/enterOtpFragment"
-        android:name="in.jadu.anju.commonuis.EnterOtpFragment"
-        android:label="fragment_enter_otp"
-        tools:layout="@layout/fragment_enter_otp" >
+        tools:layout="@layout/fragment_select_role" >
         <action
-            android:id="@+id/action_enterOtpFragment_to_confirmOtpFragment"
+            android:id="@+id/action_selectRoleFragment_to_selectLanguage"
+            app:destination="@id/selectLanguage" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_phone_verification"
+        android:name="in.jadu.anju.commonuis.PhoneVerificationFragment"
+        android:label="phoneVerfication"
+        tools:layout="@layout/fragment_phone_verification">
+        <action
+            android:id="@+id/action_phoneVerfication_to_confirmOtpFragment"
             app:destination="@id/confirmOtpFragment" />
     </fragment>
     <fragment
         android:id="@+id/confirmOtpFragment"
         android:name="in.jadu.anju.commonuis.ConfirmOtpFragment"
         android:label="fragment_confirmotp"
-        tools:layout="@layout/fragment_confirmotp" >
+        tools:layout="@layout/fragment_confirmotp">
         <action
             android:id="@+id/action_confirmOtpFragment_to_selectRoleFragment"
+            app:destination="@id/selectRoleFragment" />
+        <action
+            android:id="@+id/action_confirmOtpFragment_to_selectRoleFragment2"
             app:destination="@id/selectRoleFragment" />
     </fragment>
     <fragment
         android:id="@+id/selectLanguage"
         android:name="in.jadu.anju.commonuis.SelectLanguageFragment"
-        android:label="SelectLanguage" >
+        android:label="SelectLanguage">
         <action
-            android:id="@+id/action_selectLanguage_to_enterOtpFragment"
-            app:destination="@id/enterOtpFragment" />
+            android:id="@+id/action_selectLanguage_to_fragment_phone_verification"
+            app:destination="@id/fragment_phone_verification"
+            app:popUpTo="@id/selectLanguage"
+            app:popUpToInclusive="true"
+            />
     </fragment>
 </navigation>

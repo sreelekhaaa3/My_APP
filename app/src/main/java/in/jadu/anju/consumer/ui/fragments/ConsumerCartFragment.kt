@@ -1,4 +1,4 @@
-package `in`.jadu.anju.commonuis
+package `in`.jadu.anju.consumer.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,15 +8,13 @@ import android.view.ViewGroup
 import `in`.jadu.anju.R
 
 
-class EnterOtpFragment : Fragment() {
-
+class ConsumerCartFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
-        return inflater.inflate(R.layout.fragment_enter_otp, container, false)
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_consumer_cart, container, false)
     }
 
 }

@@ -10,4 +10,5 @@
     <string name="verify">ओटीपी प्राप्त करें</string>
     <string name="phone_number">अपना नंबर दर्ज करें</string>
     <string name="six_digit_otp">6 अंकों का ओटीपी दर्ज करें</string>
+    <string name="InvalidOtp">दर्ज किया गया ओटीपी अमान्य है! पुन: प्रयास करें</string>
 </resources>

@@ -10,9 +10,14 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-
         android:theme="@style/Theme.AnJu"
         tools:targetApi="31">
+        <activity
+            android:name=".farmer.ui.activity.FarmerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".consumer.ui.activity.ConsumerActivity"
+            android:exported="false" />
         <activity
             android:name=".commonuis.MainActivity"
             android:exported="true">

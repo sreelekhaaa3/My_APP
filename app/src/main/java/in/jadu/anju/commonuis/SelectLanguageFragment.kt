@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 import `in`.jadu.anju.R
 import `in`.jadu.anju.databinding.FragmentSelectLanguageBinding
@@ -21,6 +23,7 @@ import javax.inject.Inject
 class SelectLanguageFragment () : Fragment() {
     private lateinit var binding:FragmentSelectLanguageBinding
     @Inject lateinit var kvStorage:KvStorage
+    private lateinit var auth: FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,6 +31,8 @@ class SelectLanguageFragment () : Fragment() {
         binding = FragmentSelectLanguageBinding.inflate(inflater,container,false)
         navigateViaHindi()
         navigateViaEnglish()
+        auth = FirebaseAuth.getInstance()
+        checkUserExist()
         return binding.root
     }
 
@@ -35,7 +40,7 @@ class SelectLanguageFragment () : Fragment() {
 
     private fun navigateViaHindi(){
         binding.btnHindi.setOnClickListener {
-            findNavController().navigate(R.id.action_selectLanguage_to_enterOtpFragment)
+            findNavController().navigate(R.id.action_selectLanguage_to_fragment_phone_verification)
             kvStorage.storageSetString("AppLanguage","hindi")
             changeAppLanguage()
         }
@@ -43,7 +48,7 @@ class SelectLanguageFragment () : Fragment() {
 
     private fun navigateViaEnglish(){
         binding.btnEnglish.setOnClickListener {
-            findNavController().navigate(R.id.action_selectLanguage_to_enterOtpFragment)
+            findNavController().navigate(R.id.action_selectLanguage_to_fragment_phone_verification)
             kvStorage.storageSetString("AppLanguage","english")
             changeAppLanguage()
         }
@@ -71,7 +76,11 @@ class SelectLanguageFragment () : Fragment() {
 
     override fun onResume() {
         super.onResume()
-
     }
 
+    private fun checkUserExist(){
+        val currentUser = auth.currentUser
+        if(currentUser != null){
+        }
+    }
 }
