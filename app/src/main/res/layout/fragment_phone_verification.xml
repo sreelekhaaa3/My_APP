@@ -56,7 +56,6 @@
         app:counterEnabled="true"
         app:startIconDrawable="@drawable/baseline_local_phone_24"
         app:prefixText="+91 "
-
         app:prefixTextColor="@color/primary_text_color"
         app:counterMaxLength="10"
         app:helperText="*Required"

@@ -5,16 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import `in`.jadu.anju.R
+import `in`.jadu.anju.databinding.FragmentFarmerListItemBinding
 
 class FarmerListItemFragment : Fragment() {
-
+    private lateinit var binding : FragmentFarmerListItemBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_farmer_list_item, container, false)
+        binding = FragmentFarmerListItemBinding.inflate(inflater,container,false)
+        binding.btnPreviewBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_farmerListItemFragment_to_farmerPreviewItemListFragment)
+        }
+
+        return binding.root
     }
 
 }

@@ -4,13 +4,42 @@
     <string name="select_role">Select Your Role</string>
     <string name="farmers_name">Farmers</string>
     <string name="consumers_name">Consumers</string>
-    `<!-- TODO: Remove or change this placeholder text -->
     <string name="enter_phone">Please Enter Your Number</string>
     <string name="verify">Get OTP</string>
     <string name="phone_number">Enter Your Number</string>
     <string name="six_digit_otp">Enter 6 Digit Otp</string>
     <string name="InvalidOtp">Otp Entered is Invalid ! Try Again</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="noProductsAdded">You Haven\'t Added Any Items Yet</string>
+    <string name="add_product">Add Product</string>
+
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="vegetables">Vegetables</string>
+    <string name="fruits">Fruits</string>
+    <string name="handloom">Handloom</string>
+    <string name="manures">Manures</string>
+    <string name="dairy">Dairy</string>
+    <string name="add_custom">Add Custom</string>
+    <string name="select_product_type">1. Select Your Product Type</string>
+    <string name="click_here_to_add_photo">Click Here to Add Photo</string>
+    <string name="add_photo_product">3. Add a photo of your product</string>
+    <string name="click_here">Click Here</string>
+    <string name="add_product_details">4. Add product details</string>
+    <string name="add_product_name">2. Add product Name</string>
+    <string name="eg_tomato">eg. Tomato</string>
+    <string name="harvested_date">5. Add Harvested/Manufactured Date</string>
+    <string name="harvested_date_format">eg. 08–04–2023</string>
+    <string name="expiry_date">6. Add Expiry Date</string>
+    <string name="price">7. Set your price</string>
+    <string name="eg_40">eg. ₹40</string>
+    <string name="preview_product">Preview</string>
+    <string name="product_type">1. Product type</string>
+    <string name="product_name">2. Product Name</string>
+    <string name="_3_product_image">3. Product Image</string>
+    <string name="product_description">4. Product Description</string>
+    <string name="_harvested_date">5. Harvest/Manufactured Date</string>
+    <string name="_expiry_date">6. Expiry Date</string>
+    <string name="_price">7. Price</string>
+    <string name="confirm_and_add_product">Confirm and Add Product</string>
 
 </resources>

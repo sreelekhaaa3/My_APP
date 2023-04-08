@@ -9,6 +9,7 @@ import `in`.jadu.anju.R
 
 
 class FarmerPreviewItemListFragment : Fragment() {
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

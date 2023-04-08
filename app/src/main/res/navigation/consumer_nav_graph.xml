@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/consumer_nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/consumer_nav_graph"
+    app:startDestination="@id/consumerHomeFragment">
 
+    <fragment
+        android:id="@+id/consumerHomeFragment"
+        android:name="in.jadu.anju.consumer.ui.fragments.ConsumerHomeFragment"
+        android:label="fragment_consumer_home"
+        tools:layout="@layout/fragment_consumer_home" />
+    <fragment
+        android:id="@+id/consumerPreviewPaymentFragment"
+        android:name="in.jadu.anju.consumer.ui.fragments.ConsumerPreviewPaymentFragment"
+        android:label="fragment_consumer_preview_payment"
+        tools:layout="@layout/fragment_consumer_preview_payment" />
+    <fragment
+        android:id="@+id/consumerCartFragment"
+        android:name="in.jadu.anju.consumer.ui.fragments.ConsumerCartFragment"
+        android:label="fragment_consumer_cart"
+        tools:layout="@layout/fragment_consumer_cart" />
+    <fragment
+        android:id="@+id/consumerTrackOrderFragment"
+        android:name="in.jadu.anju.consumer.ui.fragments.ConsumerTrackOrderFragment"
+        android:label="fragment_consumer_track_order"
+        tools:layout="@layout/fragment_consumer_track_order" />
 </navigation>

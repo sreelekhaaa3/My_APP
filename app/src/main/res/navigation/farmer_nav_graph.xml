@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/farmer_nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/farmer_nav_graph"
+    app:startDestination="@id/farmerDashBoardFragment">
 
+    <fragment
+        android:id="@+id/farmerDashBoardFragment"
+        android:name="in.jadu.anju.farmer.ui.fragments.FarmerDashBoardFragment"
+        android:label="fragment_farmer_dash_board"
+        tools:layout="@layout/fragment_farmer_dash_board" >
+        <action
+            android:id="@+id/action_farmerDashBoardFragment_to_farmerListItemFragment"
+            app:destination="@id/farmerListItemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/farmerListItemFragment"
+        android:name="in.jadu.anju.farmer.ui.fragments.FarmerListItemFragment"
+        android:label="fragment_farmer_list_item"
+        tools:layout="@layout/fragment_farmer_list_item" >
+        <action
+            android:id="@+id/action_farmerListItemFragment_to_farmerPreviewItemListFragment"
+            app:destination="@id/farmerPreviewItemListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/farmerPreviewItemListFragment"
+        android:name="in.jadu.anju.farmer.ui.fragments.FarmerPreviewItemListFragment"
+        android:label="fragment_farmer_preview_item_list"
+        tools:layout="@layout/fragment_farmer_preview_item_list" />
 </navigation>
