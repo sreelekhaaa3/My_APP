@@ -1,14 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".consumer.ui.fragments.ConsumerHomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+<!--   imageview -->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_consumer_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/searchiconscomsumer"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center_horizontal"
+        />
 
-</FrameLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/lato_bold"
+        android:text="@string/searching_text_consumers"
+        android:textColor="@color/primary_text_color"
+        android:textSize="20sp"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/subtitle_search_text"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/hint_text_color_dark_ui"
+        android:textSize="16sp"
+        />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_searchbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/searchbox"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        >
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pinkstrawberry"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/extended_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/extended_fab_label"
+            android:textAllCaps="false"
+            app:icon="@drawable/baseline_shopping_cart_24" />
+    </RelativeLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

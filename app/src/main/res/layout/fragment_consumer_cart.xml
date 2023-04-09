@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".consumer.ui.fragments.ConsumerCartFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_consumer_cart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/item_list_of_cart"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="@string/checkout"
+        android:id="@+id/btn_checkout"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/langbuttondesign"
+        android:textColor="@color/white"
+        android:layout_margin="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        />
 
-</FrameLayout>
+</RelativeLayout>

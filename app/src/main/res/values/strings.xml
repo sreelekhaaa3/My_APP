@@ -41,5 +41,13 @@
     <string name="_expiry_date">6. Expiry Date</string>
     <string name="_price">7. Price</string>
     <string name="confirm_and_add_product">Confirm and Add Product</string>
+    <string name="searching_text_consumers">Searching Vegis, Fruits, Dairy …</string>
+    <string name="subtitle_search_text">we made this easy for you</string>
+    <string name="extended_fab_label">Your Cart</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="distance">5 Km Away</string>
+    <string name="added_on">Added On</string>
+    <string name="checkout">Checkout</string>
+
 
 </resources>

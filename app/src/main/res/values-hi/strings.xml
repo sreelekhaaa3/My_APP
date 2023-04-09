@@ -40,4 +40,11 @@
     <string name="_expiry_date">6. उत्पाद की समाप्ति तिथि</string>
     <string name="_price">7. उत्पाद की मूल्य</string>
     <string name="confirm_and_add_product">पुष्टि करें और जोड़ें</string>
+    <string name="searching_text_consumers">सब्जियां, फल , दूध आदि की खोज ?</string>
+    <string name="subtitle_search_text">हमने आसान कर दिया</string>
+    <string name="extended_fab_label">कार्ट देखे</string>
+    <string name= "add_to_cart">कार्ट में जोड़ें</string>
+    <string name="distance">दूरी 5KM</string> 
+    <string name="added_on">जोड़ा गया</string>
+    <string name="checkout">चेक आउट</string>
 </resources>

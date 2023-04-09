@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import `in` .jadu.anju.R
 
 
 class ConsumerTrackOrderFragment : Fragment() {
@@ -14,7 +13,7 @@ class ConsumerTrackOrderFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_consumer_track_order, container, false)
+        return inflater.inflate(`in`.jadu.anju.R.layout.fragment_consumer_track_order, container, false)
     }
 
 }

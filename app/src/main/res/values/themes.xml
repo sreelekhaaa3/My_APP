@@ -12,8 +12,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
 <!--        &lt;!&ndash; Customize your theme here. -->
-        <item name="android:fontFamily">@font/lato_bold</item>
-        <item name="fontFamily">@font/lato_bold</item>
+<!--        <item name="android:fontFamily">@font/lato_bold</item>-->
+<!--        <item name="fontFamily">@font/lato_bold</item>-->
     </style>
 
     <style name="TextViewFont" parent="android:Widget.TextView">
