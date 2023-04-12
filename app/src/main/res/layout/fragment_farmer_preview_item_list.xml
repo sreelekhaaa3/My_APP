@@ -101,7 +101,7 @@
                 android:padding="5dp">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/iv_addCustom"
+                    android:id="@+id/iv_customimage"
                     android:layout_width="128dp"
                     android:layout_height="84dp"
                     android:layout_alignParentStart="true"

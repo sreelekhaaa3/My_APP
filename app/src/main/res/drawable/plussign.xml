@@ -8,8 +8,8 @@
       android:fillColor="@color/primary_text_color"/>
   <path
       android:pathData="m80.37,136.99c-2.48,0 -4.5,-2.02 -4.5,-4.5v-110.68c0,-2.48 2.02,-4.5 4.5,-4.5s4.5,2.02 4.5,4.5v110.68c0,2.49 -2.01,4.5 -4.5,4.5z"
-      android:fillColor="#fff"/>
+      android:fillColor="@color/inverse_icon_color"/>
   <path
       android:pathData="m135.71,81.65h-110.68c-2.48,0 -4.5,-2.02 -4.5,-4.5s2.02,-4.5 4.5,-4.5h110.68c2.48,0 4.5,2.02 4.5,4.5s-2.01,4.5 -4.5,4.5z"
-      android:fillColor="#fff"/>
+      android:fillColor="@color/inverse_icon_color"/>
 </vector>

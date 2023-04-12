@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.FirebaseException
@@ -13,6 +14,9 @@ import com.google.firebase.auth.*
 import dagger.hilt.android.AndroidEntryPoint
 import `in`.jadu.anju.commonuis.viewmodels.PhoneVerificationViewModel
 import `in`.jadu.anju.databinding.FragmentPhoneVerificationBinding
+import `in`.jadu.anju.farmer.models.util.GetApiState
+import `in`.jadu.anju.farmer.viewmodels.FarmerListItemViewModel
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -22,6 +26,7 @@ class PhoneVerificationFragment  : Fragment() {
     private lateinit var binding:FragmentPhoneVerificationBinding
     private lateinit var auth:FirebaseAuth
     @Inject lateinit var phoneVerificationViewModel: PhoneVerificationViewModel
+    private val farmerListItemViewModel:FarmerListItemViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,6 +34,7 @@ class PhoneVerificationFragment  : Fragment() {
         binding = FragmentPhoneVerificationBinding.inflate(inflater,container,false)
         auth = FirebaseAuth.getInstance()
         getOtp()
+
         lifecycleScope.launch {
             phoneVerificationViewModel.mainEvent.collect() { event->
                 when(event){
@@ -51,12 +57,47 @@ class PhoneVerificationFragment  : Fragment() {
                     val newPhoneNumber = "+91$phoneNumber"
                     binding.lottieProgress.visibility = View.VISIBLE
                     binding.btnVerify.visibility = View.GONE
-                   sendOtp(newPhoneNumber)
+                    sendOtp(newPhoneNumber)
+                    setPhone(newPhoneNumber)
+                    getPhone(newPhoneNumber)
                 }else{
                     binding.etEnterPhoneNumber.error = "Enter Phone Number"
                 }
         }
     }
+
+    private fun setPhone(newPhoneNumber: String) {
+        lifecycleScope.launchWhenStarted {
+            farmerListItemViewModel.setPhone(newPhoneNumber)
+                .catch {
+                    updateUiOnError(it.message.toString())
+                }
+        }
+
+    }
+
+    private fun getPhone(newPhoneNumber: String) {
+        farmerListItemViewModel.getPhone()
+        lifecycleScope.launchWhenStarted {
+            farmerListItemViewModel.apiStateFlow.collect{
+                when(it){
+//                    is GetApiState.Success-> {
+//                        val phone = it.data.
+//                        if(phone == newPhoneNumber){
+//                            updateUiAfterVerification()
+//                        }else{
+//                            updateUiOnError("Phone Number is not registered")
+//                        }
+//                    }
+
+                    else -> {}
+                }
+            }
+        }
+    }
+
+
+
     private fun checkIfEditTextIsNotEmpty():Boolean{
         return binding.etEnterPhoneNumber.text.toString().isNotEmpty()
     }

@@ -16,9 +16,11 @@
         android:orientation="horizontal"
         >
         <androidx.cardview.widget.CardView
+            android:id="@+id/list_item_01"
             android:layout_width="0dp"
             android:layout_weight="1"
             app:cardElevation = "2dp"
+            android:background="@drawable/cardview_selector"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="10dp"
@@ -26,6 +28,7 @@
             app:cardCornerRadius="10dp"
             android:layout_height="wrap_content">
             <RelativeLayout
+                android:id="@+id/rl_vegetables"
                 android:layout_width="wrap_content"
                 android:padding="5dp"
                 android:layout_height="wrap_content"
@@ -39,6 +42,7 @@
                 android:layout_alignParentTop="true"
                 />
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_vegetables"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/vegetables"
@@ -50,8 +54,10 @@
 
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/list_item_02"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:background="@drawable/cardview_selector"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
@@ -84,9 +90,11 @@
 
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/list_item_03"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:padding="5dp"
+            android:background="@drawable/cardview_selector"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
@@ -130,8 +138,10 @@
         android:layout_marginEnd="8dp"
         >
         <androidx.cardview.widget.CardView
+            android:id="@+id/list_item_04"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:background="@drawable/cardview_selector"
             app:cardElevation = "2dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
@@ -163,8 +173,10 @@
 
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/list_item_05"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:background="@drawable/cardview_selector"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             app:cardCornerRadius="10dp"
@@ -196,9 +208,11 @@
 
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/list_item_06"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:padding="5dp"
+            android:background="@drawable/cardview_selector"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             app:cardCornerRadius="10dp"
@@ -242,6 +256,7 @@
         android:layout_marginEnd="8dp"
         >
         <androidx.cardview.widget.CardView
+            android:id="@+id/list_item_07"
             android:layout_width="0dp"
             android:layout_weight="1"
             app:cardElevation = "2dp"
@@ -258,7 +273,7 @@
                 android:layout_height="wrap_content"
                 >
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/iv_addCustom"
+                    android:id="@+id/iv_customimage"
                     android:layout_width="128dp"
                     android:layout_height="84dp"
                     android:padding="15dp"
@@ -271,7 +286,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/add_custom"
                     android:textColor="@color/primary_text_color"
-                    android:layout_below="@id/iv_addCustom"
+                    android:layout_below="@id/iv_customimage"
                     android:layout_centerHorizontal="true"
                     />
             </RelativeLayout>

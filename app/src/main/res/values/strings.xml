@@ -48,6 +48,7 @@
     <string name="distance">5 Km Away</string>
     <string name="added_on">Added On</string>
     <string name="checkout">Checkout</string>
+    <string name="Fields_not_empty">Fields cannot be empty</string>
 
 
 </resources>

@@ -47,4 +47,5 @@
     <string name="distance">दूरी 5KM</string> 
     <string name="added_on">जोड़ा गया</string>
     <string name="checkout">चेक आउट</string>
+    <string name="Fields_not_empty"> फ़ील्ड्स खली नहीं हो सकते </string>
 </resources>
