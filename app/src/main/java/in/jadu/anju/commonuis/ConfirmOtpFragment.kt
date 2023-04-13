@@ -3,22 +3,27 @@ package `in`.jadu.anju.commonuis
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.*
+import dagger.hilt.android.AndroidEntryPoint
 import `in`.jadu.anju.databinding.FragmentConfirmotpBinding
+import `in`.jadu.anju.farmer.viewmodels.FarmerListItemViewModel
 
+@AndroidEntryPoint
 class ConfirmOtpFragment : Fragment() {
     private lateinit var binding: FragmentConfirmotpBinding
     private lateinit var auth: FirebaseAuth
     private var currentUser: FirebaseUser? = null
     private var phoneAuthId: String? = null
     private var editTexts = arrayOfNulls<EditText>(6)
-
+    private val farmerListItemViewModel: FarmerListItemViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -114,8 +119,16 @@ class ConfirmOtpFragment : Fragment() {
 
     private fun updateUiAfterVerification() {
         binding.lottieProgress.visibility = View.GONE
+        //trim first +91 from phonenumber
+        val phoneNumber = currentUser?.phoneNumber.toString().substring(3)
+
+        uploadPhoneNumberToRemoteDatabase(phoneNumber)
         findNavController().navigate(`in`.jadu.anju.R.id.action_confirmOtpFragment_to_selectRoleFragment)
     }
 
+    private fun uploadPhoneNumberToRemoteDatabase(phoneNumber: String){
+        Log.d("PhoneVerificationFragment", "uploadPhoneNumberToRemoteDatabase: $phoneNumber")
+        farmerListItemViewModel.setPhone(phoneNumber)
+    }
 
 }

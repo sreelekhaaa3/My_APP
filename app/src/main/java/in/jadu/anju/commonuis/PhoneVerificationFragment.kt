@@ -1,6 +1,7 @@
 package `in`.jadu.anju.commonuis
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,30 +15,31 @@ import com.google.firebase.auth.*
 import dagger.hilt.android.AndroidEntryPoint
 import `in`.jadu.anju.commonuis.viewmodels.PhoneVerificationViewModel
 import `in`.jadu.anju.databinding.FragmentPhoneVerificationBinding
-import `in`.jadu.anju.farmer.models.util.GetApiState
 import `in`.jadu.anju.farmer.viewmodels.FarmerListItemViewModel
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class PhoneVerificationFragment  : Fragment() {
-    private lateinit var binding:FragmentPhoneVerificationBinding
-    private lateinit var auth:FirebaseAuth
-    @Inject lateinit var phoneVerificationViewModel: PhoneVerificationViewModel
-    private val farmerListItemViewModel:FarmerListItemViewModel by viewModels()
+class PhoneVerificationFragment : Fragment() {
+    private lateinit var binding: FragmentPhoneVerificationBinding
+    private lateinit var auth: FirebaseAuth
+    private var farmerNumber: String? = ""
+    private  var countryCodeFarmerNumber: String? = ""
+    @Inject
+    lateinit var phoneVerificationViewModel: PhoneVerificationViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View{
-        binding = FragmentPhoneVerificationBinding.inflate(inflater,container,false)
+    ): View {
+        binding = FragmentPhoneVerificationBinding.inflate(inflater, container, false)
         auth = FirebaseAuth.getInstance()
         getOtp()
 
         lifecycleScope.launch {
-            phoneVerificationViewModel.mainEvent.collect() { event->
-                when(event){
+            phoneVerificationViewModel.mainEvent.collect() { event ->
+                when (event) {
                     is PhoneVerificationViewModel.MainEvent.GetUser -> {
                         updateUiAfterVerification()
                     }
@@ -49,63 +51,33 @@ class PhoneVerificationFragment  : Fragment() {
         }
         return binding.root
     }
-    private fun getOtp(){
-            binding.btnVerify.setOnClickListener {
-                if(checkIfEditTextIsNotEmpty()){
-                    val phoneNumber = binding.etEnterPhoneNumber.text?.trim().toString()
-                    //add +91 to phone number
-                    val newPhoneNumber = "+91$phoneNumber"
-                    binding.lottieProgress.visibility = View.VISIBLE
-                    binding.btnVerify.visibility = View.GONE
-                    sendOtp(newPhoneNumber)
-                    setPhone(newPhoneNumber)
-                    getPhone(newPhoneNumber)
-                }else{
-                    binding.etEnterPhoneNumber.error = "Enter Phone Number"
-                }
-        }
-    }
 
-    private fun setPhone(newPhoneNumber: String) {
-        lifecycleScope.launchWhenStarted {
-            farmerListItemViewModel.setPhone(newPhoneNumber)
-                .catch {
-                    updateUiOnError(it.message.toString())
-                }
-        }
-
-    }
-
-    private fun getPhone(newPhoneNumber: String) {
-        farmerListItemViewModel.getPhone()
-        lifecycleScope.launchWhenStarted {
-            farmerListItemViewModel.apiStateFlow.collect{
-                when(it){
-//                    is GetApiState.Success-> {
-//                        val phone = it.data.
-//                        if(phone == newPhoneNumber){
-//                            updateUiAfterVerification()
-//                        }else{
-//                            updateUiOnError("Phone Number is not registered")
-//                        }
-//                    }
-
-                    else -> {}
-                }
+    private fun getOtp() {
+        binding.btnVerify.setOnClickListener {
+            if (checkIfEditTextIsNotEmpty()) {
+                val phoneNumber = binding.etEnterPhoneNumber.text?.trim().toString()
+                //add +91 to phone number
+                farmerNumber = phoneNumber
+                countryCodeFarmerNumber = "+91$phoneNumber"
+                binding.lottieProgress.visibility = View.VISIBLE
+                binding.btnVerify.visibility = View.GONE
+                sendOtp(countryCodeFarmerNumber!!)
+            } else {
+                binding.etEnterPhoneNumber.error = "Enter Phone Number"
             }
         }
     }
 
 
 
-    private fun checkIfEditTextIsNotEmpty():Boolean{
-        return binding.etEnterPhoneNumber.text.toString().isNotEmpty()
+    private fun checkIfEditTextIsNotEmpty(): Boolean {
+        return binding.etEnterPhoneNumber.text.toString().isNotEmpty() && binding.etEnterPhoneNumber.text.toString().length == 10
     }
 
     private fun sendOtp(phoneNumber: String) {
         val options = PhoneAuthOptions.newBuilder(FirebaseAuth.getInstance())
             .setPhoneNumber(phoneNumber)
-            .setTimeout(60L,TimeUnit.SECONDS)
+            .setTimeout(60L, TimeUnit.SECONDS)
             .setActivity(requireActivity())
             .setCallbacks(callbacks)
             .build()
@@ -121,7 +93,7 @@ class PhoneVerificationFragment  : Fragment() {
 
             if (e is FirebaseAuthInvalidCredentialsException) {
                 // Invalid request
-                 updateUiOnError(e.toString())
+                updateUiOnError(e.toString())
             } else if (e is FirebaseTooManyRequestsException) {
                 // The SMS quota for the project has been exceeded
                 updateUiOnError(e.toString())
@@ -131,13 +103,19 @@ class PhoneVerificationFragment  : Fragment() {
             }
         }
 
-        override fun onCodeSent(verificationId: String, token: PhoneAuthProvider.ForceResendingToken) {
+        override fun onCodeSent(
+            verificationId: String,
+            token: PhoneAuthProvider.ForceResendingToken
+        ) {
 //            storedVerificationId = verificationId
 //            resendToken = token
             //send the verficaiton id to the next fragment
             val bundle = Bundle()
-            bundle.putString("verificationId",verificationId)
-            findNavController().navigate(`in`.jadu.anju.R.id.action_phoneVerfication_to_confirmOtpFragment,bundle)
+            bundle.putString("verificationId", verificationId)
+            findNavController().navigate(
+                `in`.jadu.anju.R.id.action_phoneVerfication_to_confirmOtpFragment,
+                bundle
+            )
         }
     }
 
@@ -148,14 +126,9 @@ class PhoneVerificationFragment  : Fragment() {
         binding.tvError.text = e
     }
 
-    private fun updateUiAfterVerification(){
+    private fun updateUiAfterVerification() {
         binding.lottieProgress.visibility = View.GONE
         binding.btnVerify.visibility = View.VISIBLE
         findNavController().navigate(`in`.jadu.anju.R.id.action_phoneVerfication_to_confirmOtpFragment)
     }
-
-
-
-
-
 }

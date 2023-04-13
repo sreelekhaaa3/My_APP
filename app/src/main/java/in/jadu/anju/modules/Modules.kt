@@ -6,8 +6,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import `in`.jadu.anju.commonuis.viewmodels.PhoneVerificationViewModel
-import `in`.jadu.anju.consumer.models.remote.ConsumerApiService
-import `in`.jadu.anju.farmer.models.dtos.FarmerAuth
 import `in`.jadu.anju.farmer.models.remote.FarmerApiService
 import `in`.jadu.anju.kvstorage.KvStorage
 import retrofit2.Retrofit
@@ -29,12 +27,12 @@ object Modules {
         return PhoneVerificationViewModel()
     }
 
-    @Provides
-    @Singleton
-    fun provideConsumerApiService():ConsumerApiService = Retrofit.Builder().baseUrl(ConsumerApiService.BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-        .create(ConsumerApiService::class.java)
+//    @Provides
+//    @Singleton
+//    fun provideConsumerApiService():ConsumerApiService = Retrofit.Builder().baseUrl(ConsumerApiService.BASE_URL)
+//        .addConverterFactory(GsonConverterFactory.create())
+//        .build()
+//        .create(ConsumerApiService::class.java)
 
     @Provides
     @Singleton

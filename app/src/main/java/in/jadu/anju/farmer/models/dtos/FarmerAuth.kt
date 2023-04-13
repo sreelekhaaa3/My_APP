@@ -1,5 +1,5 @@
 package `in`.jadu.anju.farmer.models.dtos
 
 data class FarmerAuth(
-    val phoneNo: String,
+    val sellerPhoneNo: String,
 )

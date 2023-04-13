@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/farmer_nav_graph"
-    app:startDestination="@id/farmerDashBoardFragment">
+    app:startDestination="@id/selectLanguageFragment">
 
     <fragment
         android:id="@+id/farmerDashBoardFragment"
@@ -28,4 +28,30 @@
         android:name="in.jadu.anju.farmer.ui.fragments.FarmerPreviewItemListFragment"
         android:label="fragment_farmer_preview_item_list"
         tools:layout="@layout/fragment_farmer_preview_item_list" />
+    <fragment
+        android:id="@+id/selectLanguageFragment"
+        android:name="in.jadu.anju.commonuis.SelectLanguageFragment"
+        android:label="SelectLanguageFragment" >
+        <action
+            android:id="@+id/action_selectLanguageFragment_to_phoneVerificationFragment"
+            app:destination="@id/phoneVerificationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/phoneVerificationFragment"
+        android:name="in.jadu.anju.commonuis.PhoneVerificationFragment"
+        android:label="fragment_phone_verification"
+        tools:layout="@layout/fragment_phone_verification" >
+        <action
+            android:id="@+id/action_phoneVerificationFragment_to_confirmOtpFragment2"
+            app:destination="@id/confirmOtpFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmOtpFragment2"
+        android:name="in.jadu.anju.commonuis.ConfirmOtpFragment"
+        android:label="fragment_confirmotp"
+        tools:layout="@layout/fragment_confirmotp" >
+        <action
+            android:id="@+id/action_confirmOtpFragment2_to_farmerDashBoardFragment"
+            app:destination="@id/farmerDashBoardFragment" />
+    </fragment>
 </navigation>
