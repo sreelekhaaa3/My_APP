@@ -55,7 +55,7 @@
 
 <!--    button to add item -->
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnAddItem"
+        android:id="@+id/AddItemButton"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@drawable/langbuttondesign"

@@ -179,7 +179,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_preview_btn"
+            android:id="@+id/PreviewAddedProduct"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@drawable/langbuttondesign"

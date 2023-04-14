@@ -81,6 +81,7 @@ class SelectLanguageFragment () : Fragment() {
     private fun checkUserExist(){
         val currentUser = auth.currentUser
         if(currentUser != null){
+            findNavController().navigate(R.id.action_selectLanguage_to_farmerDashBoardFragment2)
         }
     }
 }

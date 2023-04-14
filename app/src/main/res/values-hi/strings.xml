@@ -48,4 +48,6 @@
     <string name="added_on">जोड़ा गया</string>
     <string name="checkout">चेक आउट</string>
     <string name="Fields_not_empty"> फ़ील्ड्स खली नहीं हो सकते </string>
+    <string name="go_to_dashboard">डैशबोर्ड पे जाये</string>
+    <string name="product_listed">उत्पाद सफलतापूर्वक जोड़ा गया</string>
 </resources>

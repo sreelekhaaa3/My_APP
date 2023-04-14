@@ -10,11 +10,7 @@
         android:id="@+id/selectRoleFragment"
         android:name="in.jadu.anju.commonuis.SelectRoleFragment"
         android:label="fragment_select_role"
-        tools:layout="@layout/fragment_select_role" >
-        <action
-            android:id="@+id/action_selectRoleFragment_to_selectLanguage"
-            app:destination="@id/selectLanguage" />
-    </fragment>
+        tools:layout="@layout/fragment_select_role" />
     <fragment
         android:id="@+id/fragment_phone_verification"
         android:name="in.jadu.anju.commonuis.PhoneVerificationFragment"
@@ -46,5 +42,42 @@
             app:popUpTo="@id/selectLanguage"
             app:popUpToInclusive="true"
             />
+        <action
+            android:id="@+id/action_selectLanguage_to_farmerDashBoardFragment2"
+            app:destination="@id/farmerDashBoardFragment2"
+            app:popUpTo="@id/selectLanguage"
+            app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/farmerDashBoardFragment2"
+        android:name="in.jadu.anju.farmer.ui.fragments.FarmerDashBoardFragment"
+        android:label="fragment_farmer_dash_board"
+        tools:layout="@layout/fragment_farmer_dash_board" >
+        <action
+            android:id="@+id/action_farmerDashBoardFragment2_to_farmerListItemFragment2"
+            app:destination="@id/farmerListItemFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/farmerListItemFragment2"
+        android:name="in.jadu.anju.farmer.ui.fragments.FarmerListItemFragment"
+        android:label="fragment_farmer_list_item"
+        tools:layout="@layout/fragment_farmer_list_item" >
+        <action
+            android:id="@+id/action_farmerListItemFragment2_to_farmerPreviewItemListFragment2"
+            app:destination="@id/farmerPreviewItemListFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/farmerPreviewItemListFragment2"
+        android:name="in.jadu.anju.farmer.ui.fragments.FarmerPreviewItemListFragment"
+        android:label="fragment_farmer_preview_item_list"
+        tools:layout="@layout/fragment_farmer_preview_item_list" >
+        <action
+            android:id="@+id/action_farmerPreviewItemListFragment2_to_successListingFragment"
+            app:destination="@id/successListingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/successListingFragment"
+        android:name="in.jadu.anju.farmer.ui.fragments.SuccessListingFragment"
+        android:label="fragment_success_listing"
+        tools:layout="@layout/fragment_success_listing" />
 </navigation>

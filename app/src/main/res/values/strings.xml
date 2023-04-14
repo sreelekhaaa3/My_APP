@@ -49,6 +49,8 @@
     <string name="added_on">Added On</string>
     <string name="checkout">Checkout</string>
     <string name="Fields_not_empty">Fields cannot be empty</string>
+    <string name="go_to_dashboard">Go to Dashboard</string>
+    <string name="product_listed">Product Listed!</string>
 
 
 </resources>

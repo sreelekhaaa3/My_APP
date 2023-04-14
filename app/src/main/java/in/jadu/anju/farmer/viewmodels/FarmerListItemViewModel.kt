@@ -1,37 +1,52 @@
 package `in`.jadu.anju.farmer.viewmodels
 
+import android.content.Context
+import android.net.Uri
+import android.provider.MediaStore
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.lifecycle.HiltViewModel
 import `in`.jadu.anju.farmer.models.dtos.FarmerAuth
+import `in`.jadu.anju.farmer.models.dtos.ListItemTypes
+import `in`.jadu.anju.farmer.models.local.LocalDataInterface
 import `in`.jadu.anju.farmer.models.repository.FarmerRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.HttpException
+import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel
-class FarmerListItemViewModel @Inject constructor(private val farmerRepository: FarmerRepository):ViewModel() {
-//
-//    private val _apiStateFlow:MutableStateFlow<GetApiState> = MutableStateFlow(GetApiState.Empty)
-//    val apiStateFlow:StateFlow<GetApiState> = _apiStateFlow
+class FarmerListItemViewModel @Inject constructor(
+    private val farmerRepository: FarmerRepository,
+    private val LocalDataRepository: LocalDataInterface
+) :
+    ViewModel() {
+    private val mainEventChannel = Channel<MainEvent>()
+    val mainEvent = mainEventChannel.receiveAsFlow()
+    private var currentUser: FirebaseUser? = null
+    private  var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private var _index = 0
+    private var _imageData: MultipartBody.Part? = null
+    private var _uri: Uri? = null
 
     private val _getVerificationData = MutableLiveData<FarmerAuth>()
     val phoneVerification: LiveData<FarmerAuth>
         get() = _getVerificationData
 
-//    fun getPhone() = viewModelScope.launch {
-//        farmerRepository.getPhone().onStart {
-//            _apiStateFlow.value = GetApiState.Loading
-//        }.catch {
-//            _apiStateFlow.value = GetApiState.Error(it)
-//        }.collect {
-//            _apiStateFlow.value = GetApiState.Success(it)
-//        }
-//    }
 
-    fun setPhone(phoneNo:String) = viewModelScope.launch(Dispatchers.IO) {
+    val getItems = LocalDataRepository.getListItemByPhoneNumber("")
+    fun setPhone(phoneNo: String) = viewModelScope.launch(Dispatchers.IO) {
         farmerRepository.setPhone(phoneNo)
     }
 
@@ -39,5 +54,91 @@ class FarmerListItemViewModel @Inject constructor(private val farmerRepository: 
         _getVerificationData.postValue(farmerRepository.getPhone(phoneNo))
     }
 
+    fun createProductRemote(
+        productType: String,
+        productName: String,
+        productImageUri: MultipartBody.Part,
+        description: String,
+        productPacked: String,
+        productExpire: String,
+        productPrice: String
+    ) = viewModelScope.launch(Dispatchers.IO) {
+        try {
+            farmerRepository.createProduct(
+                productType,
+                productName,
+                productImageUri,
+                description,
+                productPacked,
+                productExpire,
+                productPrice,
+                auth.currentUser?.phoneNumber.toString().substring(3)
+            )
+            viewModelScope.launch {
+                mainEventChannel.send(MainEvent.Success("Product Created Successfully"))
+            }
+        }catch (e:HttpException){
+            e.printStackTrace()
+            viewModelScope.launch {
+                mainEventChannel.send(MainEvent.Error(e.message()))
+            }
+        }
+
+    }
+
+    suspend fun insertListItemTypes(listItemTypes: ListItemTypes) = viewModelScope.launch(Dispatchers.IO) {
+        LocalDataRepository.insertListItemTypes(listItemTypes)
+    }
+
+    fun getListItemByPhoneNumber(phoneNumber: String) {
+        LocalDataRepository.getListItemByPhoneNumber(phoneNumber)
+    }
+
+    fun setIndex(index:Int){
+        _index = index
+    }
+
+    fun getIndex():Int{
+        return _index
+    }
+
+    fun setImageMultipart(imageData:MultipartBody.Part){
+        _imageData = imageData
+    }
+
+    fun getImageMultipart():MultipartBody.Part?{
+        return _imageData
+    }
+
+    fun setUri(uri:Uri){
+        _uri = uri
+    }
+
+    fun getUri():Uri?{
+        return _uri
+    }
+
+    fun getImagePart(selectedImageUri: Uri, context: Context): MultipartBody.Part {
+        val file = File(getRealPathFromUri(selectedImageUri, context))
+        val contentResolver = context.contentResolver
+        val mimeType = contentResolver.getType(selectedImageUri)
+        val requestFile = RequestBody.create(mimeType?.let { MediaType.parse(it) }, file)
+        return MultipartBody.Part.createFormData("productImageUrl", file.name, requestFile)
+    }
+
+    private fun getRealPathFromUri(uri: Uri, context: Context): String {
+        val projection = arrayOf(MediaStore.Images.Media.DATA)
+        val cursor = context.contentResolver.query(uri, projection, null, null, null)
+        val columnIndex = cursor?.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+        cursor?.moveToFirst()
+        val path = columnIndex?.let { cursor.getString(it) } ?: ""
+        cursor?.close()
+        Log.d("pathaddress", "getRealPathFromUri: $path")
+        return path
+    }
+    sealed class MainEvent {
+        data class Error(val error: String) : MainEvent()
+        data class Success(val message: String) : MainEvent()
+    }
 
 }

@@ -18,8 +18,8 @@ class FarmerDashBoardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFarmerDashBoardBinding.inflate(inflater,container,false)
-        binding.btnAddItem.setOnClickListener {
-            findNavController().navigate(R.id.action_farmerDashBoardFragment_to_farmerListItemFragment)
+        binding.AddItemButton.setOnClickListener {
+            findNavController().navigate(R.id.action_farmerDashBoardFragment2_to_farmerListItemFragment2)
         }
         return binding.root
     }
