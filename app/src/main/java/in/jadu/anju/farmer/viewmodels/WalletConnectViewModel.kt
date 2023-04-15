@@ -6,6 +6,8 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import `in`.jadu.anju.BuildConfig
+import `in`.jadu.anju.utils.Constants
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
@@ -38,7 +40,7 @@ class WalletConnectViewModel @Inject constructor() : ViewModel() {
     }
 
     private fun connectToWallet() {
-        web3j = Web3j.build(HttpService("https://app.zeeve.io/shared-api/eth/b96a970c5fac192ef208762ceebd7c5d115713474d202e83/"))
+        web3j = Web3j.build(HttpService(BuildConfig.API_KEY))
         try {
             val clientVersion = web3j!!.web3ClientVersion().sendAsync().get()
             if (!clientVersion.hasError()) {
