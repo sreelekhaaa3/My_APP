@@ -69,11 +69,19 @@
         android:textStyle="bold"
         android:text="@string/add_product"
         android:textAllCaps="false"
-        app:layout_constraintVertical_bias=".2"
+        app:layout_constraintVertical_bias="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle"
         app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rvFarmerDashBoard"
+        tools:listitem="@layout/item_list_of_farmer"
+        android:visibility="visible"
         />
 
 

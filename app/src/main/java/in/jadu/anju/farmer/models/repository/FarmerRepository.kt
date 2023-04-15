@@ -1,18 +1,16 @@
 package `in`.jadu.anju.farmer.models.repository
 
-import android.app.LauncherActivity.ListItem
 import `in`.jadu.anju.farmer.models.dtos.FarmerAuth
-import `in`.jadu.anju.farmer.models.dtos.ListItemTypes
-import `in`.jadu.anju.farmer.models.dtos.ListItemTypesRemote
 import `in`.jadu.anju.farmer.models.remote.FarmerApiService
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import javax.inject.Inject
 
 class FarmerRepository @Inject constructor(private val farmerApiService: FarmerApiService) {
 
-    suspend fun getPhone(phoneNo: String) = farmerApiService.getPhone(phoneNo)
+    suspend fun farmerProductList(phoneNo: String) = farmerApiService.getFarmerProductList(phoneNo)
     suspend fun setPhone(phoneNo: String) = farmerApiService.setPhone(FarmerAuth(phoneNo))
 
     suspend fun createProduct(
@@ -33,6 +31,6 @@ class FarmerRepository @Inject constructor(private val farmerApiService: FarmerA
             productExpire,
             productPrice,
             phone,
-            RequestBody.create(MediaType.parse("text/plain"), phone)
+            RequestBody.create("text/plain".toMediaTypeOrNull(), phone)
     )
 }

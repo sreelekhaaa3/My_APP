@@ -56,6 +56,11 @@
         <action
             android:id="@+id/action_farmerDashBoardFragment2_to_farmerListItemFragment2"
             app:destination="@id/farmerListItemFragment2" />
+        <action
+            android:id="@+id/action_farmerDashBoardFragment2_to_walletFragment"
+            app:destination="@id/walletFragment"
+            app:popUpTo="@id/farmerDashBoardFragment2"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/farmerListItemFragment2"
@@ -74,10 +79,42 @@
         <action
             android:id="@+id/action_farmerPreviewItemListFragment2_to_successListingFragment"
             app:destination="@id/successListingFragment" />
+        <action
+            android:id="@+id/action_farmerPreviewItemListFragment2_to_farmerListItemFragment2"
+            app:destination="@id/farmerListItemFragment2"
+            app:popUpTo="@id/farmerListItemFragment2"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/successListingFragment"
         android:name="in.jadu.anju.farmer.ui.fragments.SuccessListingFragment"
         android:label="fragment_success_listing"
-        tools:layout="@layout/fragment_success_listing" />
+        tools:layout="@layout/fragment_success_listing" >
+        <action
+            android:id="@+id/action_successListingFragment_to_farmerDashBoardFragment2"
+            app:destination="@id/farmerDashBoardFragment2"
+            app:popUpTo="@id/farmerDashBoardFragment2"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/walletFragment"
+        android:name="in.jadu.anju.farmer.ui.fragments.WalletFragment"
+        android:label="WalletFragment" >
+        <action
+            android:id="@+id/action_walletFragment_to_walletConnectFragment"
+            app:destination="@id/walletConnectFragment"
+            app:popUpTo="@id/walletFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/walletConnectFragment"
+        android:name="in.jadu.anju.farmer.ui.fragments.WalletConnectFragment"
+        android:label="fragment_wallet_connect"
+        tools:layout="@layout/fragment_wallet_connect" >
+        <action
+            android:id="@+id/action_walletConnectFragment_to_walletFragment"
+            app:destination="@id/walletFragment"
+            app:popUpTo="@id/walletConnectFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

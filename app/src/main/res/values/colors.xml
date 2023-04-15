@@ -16,4 +16,5 @@
     <color name="ErrorColor">#B3261E</color>
     <color name="blueColor">#59A5D8</color>
     <color name="whitedull">#F8F8F8</color>
+    <color name="TextCopyBackground">#23CE6B</color>
 </resources>

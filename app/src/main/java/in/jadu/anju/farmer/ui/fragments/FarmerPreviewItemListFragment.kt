@@ -40,6 +40,9 @@ class FarmerPreviewItemListFragment : Fragment() {
             binding.btnPreviewBtn.visibility = View.GONE
             uploadDataToServer()
         }
+        binding.btnEditFields.setOnClickListener {
+            findNavController().navigate(R.id.action_farmerPreviewItemListFragment2_to_farmerListItemFragment2)
+        }
         lifecycleScope.launch {
             farmerListItemViewModel.mainEvent.collect() { event ->
                 when (event) {

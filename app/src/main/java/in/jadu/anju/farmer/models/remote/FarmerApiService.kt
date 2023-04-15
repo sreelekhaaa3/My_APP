@@ -2,18 +2,20 @@ package `in`.jadu.anju.farmer.models.remote
 
 import `in`.jadu.anju.farmer.models.dtos.FarmerAuth
 import `in`.jadu.anju.farmer.models.dtos.ListItemTypes
-import `in`.jadu.anju.farmer.models.dtos.ListItemTypesRemote
+import `in`.jadu.anju.farmer.models.dtos.Product
+import `in`.jadu.anju.farmer.models.dtos.RemoteListTypeBackend
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.Response
 import retrofit2.http.*
 
 interface FarmerApiService {
     companion object {
-        const val BASE_URL = "http://192.168.1.4:5000/"
+        const val BASE_URL = "http://192.168.1.3:5000/"
     }
 
-    @GET("/api/seller/{phoneNo}")
-    suspend fun getPhone(@Path("phoneNo") phoneNo: String): FarmerAuth
+    @GET("/api/product/{phoneNo}")
+    suspend fun getFarmerProductList(@Path("phoneNo") phoneNo: String): retrofit2.Response<RemoteListTypeBackend>
 
 
     @POST("api/seller/auth")

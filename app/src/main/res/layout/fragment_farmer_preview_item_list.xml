@@ -76,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="this is product name"
-                android:textColor="@color/hint_text_color_dark_ui"
+                android:textColor="@color/primary_text_color"
                 android:layout_marginStart="15dp"
                 android:layout_gravity="center_vertical"
                 />
@@ -135,7 +135,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="this is product description"
-                android:textColor="@color/hint_text_color_dark_ui"
+                android:textColor="@color/primary_text_color"
                 android:layout_marginStart="15dp"
                 android:layout_gravity="center_vertical"
                 />
@@ -163,7 +163,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="this is product name"
-                android:textColor="@color/hint_text_color_dark_ui"
+                android:textColor="@color/primary_text_color"
                 android:layout_marginStart="15dp"
                 android:layout_gravity="center_vertical"
                 />
@@ -188,7 +188,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="this is product expiry date"
-                android:textColor="@color/hint_text_color_dark_ui"
+                android:textColor="@color/primary_text_color"
                 android:layout_marginStart="15dp"
                 android:layout_gravity="center_vertical"
                 />
@@ -215,11 +215,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="this is product price"
-                android:textColor="@color/hint_text_color_dark_ui"
+                android:textColor="@color/primary_text_color"
                 android:layout_marginStart="15dp"
                 android:layout_gravity="center_vertical"
                 />
         </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_edit_fields"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/langbuttondesign"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/edit_details"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
         <RelativeLayout
             android:layout_width="wrap_content"

@@ -11,8 +11,9 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.lifecycle.HiltViewModel
-import `in`.jadu.anju.farmer.models.dtos.FarmerAuth
 import `in`.jadu.anju.farmer.models.dtos.ListItemTypes
+import `in`.jadu.anju.farmer.models.dtos.Product
+import `in`.jadu.anju.farmer.models.dtos.RemoteListTypeBackend
 import `in`.jadu.anju.farmer.models.local.LocalDataInterface
 import `in`.jadu.anju.farmer.models.repository.FarmerRepository
 import kotlinx.coroutines.Dispatchers
@@ -20,10 +21,14 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import org.bouncycastle.jce.provider.BouncyCastleProvider
 import retrofit2.HttpException
 import java.io.File
+import java.security.Provider
+import java.security.Security
 import javax.inject.Inject
 
 @HiltViewModel
@@ -40,18 +45,34 @@ class FarmerListItemViewModel @Inject constructor(
     private var _imageData: MultipartBody.Part? = null
     private var _uri: Uri? = null
 
-    private val _getVerificationData = MutableLiveData<FarmerAuth>()
-    val phoneVerification: LiveData<FarmerAuth>
-        get() = _getVerificationData
+    private val _getFarmerListData = MutableLiveData<List<Product>>()
+    val getFarmerListData: LiveData<List<Product>>
+        get() = _getFarmerListData
 
+    init {
+        setupBouncyCastle()
+    }
 
     val getItems = LocalDataRepository.getListItemByPhoneNumber("")
     fun setPhone(phoneNo: String) = viewModelScope.launch(Dispatchers.IO) {
         farmerRepository.setPhone(phoneNo)
     }
 
-    fun getPhone(phoneNo: String) = viewModelScope.launch(Dispatchers.IO) {
-        _getVerificationData.postValue(farmerRepository.getPhone(phoneNo))
+    fun getFarmerItemList(phoneNo: String) = viewModelScope.launch(Dispatchers.IO) {
+        try {
+            val response = farmerRepository.farmerProductList(phoneNo)
+            if (response.isSuccessful) {
+                Log.d("FarmerListItemViewModel", "getFarmerItemList: ${response.body()}")
+                _getFarmerListData.postValue(response.body()?.product)
+
+            }
+
+        } catch (e: HttpException) {
+            e.printStackTrace()
+            viewModelScope.launch {
+                mainEventChannel.send(MainEvent.Error(e.message()))
+            }
+        }
     }
 
     fun createProductRemote(
@@ -122,7 +143,7 @@ class FarmerListItemViewModel @Inject constructor(
         val file = File(getRealPathFromUri(selectedImageUri, context))
         val contentResolver = context.contentResolver
         val mimeType = contentResolver.getType(selectedImageUri)
-        val requestFile = RequestBody.create(mimeType?.let { MediaType.parse(it) }, file)
+        val requestFile = RequestBody.create(mimeType?.toMediaTypeOrNull(), file)
         return MultipartBody.Part.createFormData("productImageUrl", file.name, requestFile)
     }
 
@@ -141,4 +162,14 @@ class FarmerListItemViewModel @Inject constructor(
         data class Success(val message: String) : MainEvent()
     }
 
+    private fun setupBouncyCastle() {
+        val provider: Provider = Security.getProvider(BouncyCastleProvider.PROVIDER_NAME)
+            ?:
+            return
+        if (provider.javaClass == BouncyCastleProvider::class.java) {
+            return
+        }
+        Security.removeProvider(BouncyCastleProvider.PROVIDER_NAME)
+        Security.insertProviderAt(BouncyCastleProvider(), 1)
+    }
 }
