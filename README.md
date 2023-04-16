@@ -89,9 +89,12 @@ The project has been successful in achieving its objectives.
 <img src = https://user-images.githubusercontent.com/48874687/232323265-98fe986d-fda4-41f5-8536-e3e9eba03089.jpg  width = "200" height = "400">
 <img src = https://user-images.githubusercontent.com/48874687/232323275-6b90e755-11a4-4fa9-8f83-f6e3f1f5cf2d.jpg  width = "200" height = "400">
 
-  </p>
+</p>
 
 
+##Downloads 
+- For downloading Farmer apk [Click](https://github.com/Rohit-554/GFG-Agrichain-Farmer/releases/tag/1.0)
+- For download Consumer apk [Click](https://github.com/Rohit-554/GFG-AnJuConsumerApp/releases/tag/0.1)
 
 ## Future scope
 * **Providing delivery for the purchased goods:** Currently, the project only facilitates the transaction between farmers and consumers. However, providing delivery services for the purchased goods can further enhance the user experience.
