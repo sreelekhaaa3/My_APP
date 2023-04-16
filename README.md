@@ -42,9 +42,9 @@ This is an Android project that connects farmers directly with consumers without
 
 **Server:** Node, Express
 
-**Database:** MongoDB, Firestore
+**Database:** MongoDB, Firestore (Google cloud)
 
-**Other:** AMD space
+**Other:** AMD instance (backend deployed)
 
 
 ## Objective
