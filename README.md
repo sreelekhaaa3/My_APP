@@ -135,3 +135,13 @@ The project has been successful in achieving its objectives.
   <summary>How can I provide feedback on the app?</summary>
   We welcome feedback from our users. You can provide your feedback by sending us an email at [chandel.s.aman@gmail.com]. We will take your feedback into consideration to improve our services.
 </details>
+
+<h2> Team Jadx </h2>
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/chandel-aman"><img src="https://avatars.githubusercontent.com/u/97614113?v=4" width="100px;" alt=""/><br /><sub><b>Aman Chandel <br> (UiDesigns and Backend) </b></sub></a><br /><a href="" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/AkashSharma001"><img src="https://avatars.githubusercontent.com/u/97700368?v=4" width="100px;" alt=""/><br /><sub><b>Akash Sharma <br>(Backend and Amd Deploy)</b></sub></a><br /><a href="" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Rohit-554"><img src="https://avatars.githubusercontent.com/u/48874687?v=4" width="100px;" alt=""/><br /><sub><b>Rohit Kumar <br>(Application and <br> Blockchain Integration)</b></sub></a><br /><a href="" title="Code">💻</a></td>
+   
+  </tr>
+</table>
