@@ -55,7 +55,15 @@ class FarmerListItemViewModel @Inject constructor(
 
     val getItems = LocalDataRepository.getListItemByPhoneNumber("")
     fun setPhone(phoneNo: String) = viewModelScope.launch(Dispatchers.IO) {
-        farmerRepository.setPhone(phoneNo)
+        try {
+            farmerRepository.setPhone(phoneNo)
+        }catch (e: HttpException){
+            e.printStackTrace()
+            viewModelScope.launch {
+                mainEventChannel.send(MainEvent.Error(e.message()))
+            }
+        }
+
     }
 
     fun getFarmerItemList(phoneNo: String) = viewModelScope.launch(Dispatchers.IO) {

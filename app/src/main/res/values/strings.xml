@@ -66,6 +66,15 @@
     <string name="enter_wallet_address">Enter Wallet Address</string>
     <string name="send_fund">Send Fund</string>
     <string name="enter_amount">Enter Amount</string>
+    <string name="total_eths_required">Total Eths Required</string>
+    <string name="expected_delivery_date">Expected Delivery Date</string>
+    <string name="delivery_cost">Delivery Cost</string>
+    <string name="total_amount">Total Amount</string>
+    <string name="view_order">View Order</string>
+    <string name="payment_successful">Payment Successful</string>
+    <string name="payment_details">Payment Details</string>
+    <string name="wallet_created_successfully">Wallet Retrieved</string>
+    <string name="deposit_fund">Deposit Fund</string>
 
 
 </resources>

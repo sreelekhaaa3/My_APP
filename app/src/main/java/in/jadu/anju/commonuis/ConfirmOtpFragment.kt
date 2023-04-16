@@ -13,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.*
 import dagger.hilt.android.AndroidEntryPoint
+import `in`.jadu.anju.R
 import `in`.jadu.anju.databinding.FragmentConfirmotpBinding
 import `in`.jadu.anju.farmer.viewmodels.FarmerListItemViewModel
 
@@ -121,14 +122,14 @@ class ConfirmOtpFragment : Fragment() {
         binding.lottieProgress.visibility = View.GONE
         //trim first +91 from phonenumber
         val phoneNumber = currentUser?.phoneNumber.toString().substring(3)
-
+        Log.d("PhoneVerificationFragment", "updateUiAfterVerification: $phoneNumber")
         uploadPhoneNumberToRemoteDatabase(phoneNumber)
-        findNavController().navigate(`in`.jadu.anju.R.id.action_confirmOtpFragment_to_selectRoleFragment)
+        findNavController().navigate(R.id.action_confirmOtpFragment_to_farmerDashBoardFragment2)
     }
 
     private fun uploadPhoneNumberToRemoteDatabase(phoneNumber: String){
         Log.d("PhoneVerificationFragment", "uploadPhoneNumberToRemoteDatabase: $phoneNumber")
-        farmerListItemViewModel.setPhone(phoneNumber)
+//        farmerListItemViewModel.setPhone(phoneNumber)
     }
 
 }

@@ -6,4 +6,11 @@
         app:showAsAction="always"
         android:icon="@drawable/baseline_account_balance_wallet_24"
         android:title="Wallet" />
+
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/baseline_exit_to_app_24"
+        android:title="Logout"
+        app:iconTint="@color/white"
+        app:showAsAction="always" />
 </menu>

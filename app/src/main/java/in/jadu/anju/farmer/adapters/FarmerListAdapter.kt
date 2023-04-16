@@ -46,7 +46,6 @@ class FarmerListAdapter(private val itemTypes: List<Product>) : RecyclerView.Ada
         holder.price.text = "₹"+currentItem.productPrice.removeSurrounding("\"") + "/Kg"
         //use glide to set the image here
         val imageLink = getImageLink(currentItem.productImageUrl.removeSurrounding("\""))
-        Log.d("RohitImagelik", imageLink)
         Glide.with(holder.itemView.context).load(imageLink).into(holder.productImage)
 
     }

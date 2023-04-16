@@ -6,7 +6,7 @@
     <string name="farmers_name">किसान</string>
     <string name="consumers_name">उपभोक्ता</string>
     <string name="enter_phone">कृपया अपना नंबर दर्ज करें</string>
-<!--    get top-->
+    <!--    get top-->
     <string name="verify">ओटीपी प्राप्त करें</string>
     <string name="phone_number">अपना नंबर दर्ज करें</string>
     <string name="six_digit_otp">6 अंकों का ओटीपी दर्ज करें</string>
@@ -44,7 +44,7 @@
     <string name="subtitle_search_text">हमने आसान कर दिया</string>
     <string name="extended_fab_label">कार्ट देखे</string>
     <string name= "add_to_cart">कार्ट में जोड़ें</string>
-    <string name="distance">दूरी 5KM</string> 
+    <string name="distance">दूरी 5KM</string>
     <string name="added_on">जोड़ा गया</string>
     <string name="checkout">चेक आउट</string>
     <string name="Fields_not_empty"> फ़ील्ड्स खली नहीं हो सकते </string>
@@ -55,4 +55,23 @@
     <string name="edit_details">विवरण संपादित करें</string>
     <string name="wallet_not_created">अपने वॉलेट नहीं बनाया है अभी तक </string>
     <string name="create_wallet">वॉलेट बनाये</string>
+    <string name="enter_wallet_details">अपने वॉलेट का नाम और वॉलेट का विवरण दर्ज करें</string>
+    <string name="enter_password">अपना पासवर्ड दर्ज करें</string>
+    <string name="enter_wallet_name">अपना वॉलेट नाम दर्ज करें</string>
+    <string name="wallet_name">वॉलेट नाम</string>
+    <string name="wallet_password">वॉलेट पासवर्ड</string>
+    <string name="acc_address">खाता पता</string>
+    <string name="copy_address">पता कॉपी करें और वॉलेट चेकआउट करे</string>
+    <string name="enter_wallet_address">वॉलेट पता दर्ज करें</string>
+    <string name="send_fund">धन भेजें</string>
+    <string name="enter_amount">अपना धन दर्ज करें</string>
+    <string name="total_eths_required">"कुल ETHS"</string>
+    <string name="expected_delivery_date">अपेक्षित तिथि</string>
+    <string name="delivery_cost">डिलीवरी की लागत</string>
+    <string name="total_amount">कुल राशि</string>
+    <string name="view_order">ऑर्डर देखें</string>
+    <string name="payment_successful">भुगतान सफल</string>
+    <string name="payment_details">भुगतान विवरण</string>
+    <string name="wallet_created_successfully">वॉलेट पुनः प्राप्त किया गया</string>
+    <string name="deposit_fund">धन जमा करें</string>
 </resources>

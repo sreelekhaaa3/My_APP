@@ -7,6 +7,17 @@
     tools:context=".farmer.ui.fragments.FarmerDashBoardFragment">
 
 <!--    Lottie animation above the guideline -->
+    <ProgressBar
+        android:id="@+id/loadwalletprogress"
+        android:layout_margin="10dp"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieAnimationView"
         android:layout_width="256dp"

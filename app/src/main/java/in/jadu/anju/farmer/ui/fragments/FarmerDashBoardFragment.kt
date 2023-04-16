@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
@@ -39,6 +40,7 @@ class FarmerDashBoardFragment : Fragment() {
         binding = FragmentFarmerDashBoardBinding.inflate(inflater,container,false)
         itemListRecyclerView = binding.rvFarmerDashBoard
         itemListRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        farmerListItemViewModel.setPhone(auth.currentUser?.phoneNumber!!.substring(3))
         farmerListItemViewModel.getFarmerItemList(auth.currentUser?.phoneNumber!!.substring(3))
         farmerListItemViewModel.getFarmerListData.observe(viewLifecycleOwner){
             Log.d("FarmerList",it.toString())
@@ -77,7 +79,12 @@ class FarmerDashBoardFragment : Fragment() {
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 if (menuItem.itemId == R.id.wallet){
+                    binding.loadwalletprogress.isVisible = true
                     findNavController().navigate(R.id.action_farmerDashBoardFragment2_to_walletFragment)
+                }
+                if (menuItem.itemId == R.id.logout){
+                    auth.signOut()
+                    findNavController().navigate(R.id.action_farmerDashBoardFragment2_to_selectLanguage)
                 }
                 return true
             }

@@ -45,7 +45,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="16dp"
                 android:fontFamily="@font/lato"
-                android:text="Wallet Created Successfully"
+                android:text="@string/wallet_created_successfully"
                 android:textColor="@color/primary_text_color"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -208,7 +208,7 @@
                 android:background="@drawable/langbuttondesign"
                 android:drawableTint="@color/white"
                 android:fontFamily="@font/lato_bold"
-                android:text="Deposit Fund"
+                android:text="@string/deposit_fund"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
@@ -230,7 +230,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="16dp"
                 android:fontFamily="@font/lato"
-                android:text="Send Fund"
+                android:text="@string/send_fund"
                 android:textColor="@color/primary_text_color"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -267,6 +267,8 @@
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentStart="true"
                         app:helperTextEnabled="true"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="42"
                         app:helperTextTextColor="@color/ErrorColor"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -277,7 +279,6 @@
                             android:id="@+id/et_peer_wallet_address"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/enter_wallet_address"
                             android:inputType="text"
                             />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -309,6 +310,19 @@
 
             </androidx.cardview.widget.CardView>
 
+           <RelativeLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content">
+               <ProgressBar
+                   android:id="@+id/TransefeeringProgressBar"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignParentStart="true"
+                   android:layout_alignParentEnd="true"
+                   android:layout_margin="16dp"
+                   android:visibility="visible"
+                   />
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_send_money"
                 android:layout_width="match_parent"
@@ -323,7 +337,11 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
+           </RelativeLayout>
+
+
         </androidx.appcompat.widget.LinearLayoutCompat>
+
 
 
         <TextView

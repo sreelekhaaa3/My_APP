@@ -48,6 +48,8 @@ class FarmerPreviewItemListFragment : Fragment() {
                 when (event) {
                     is FarmerListItemViewModel.MainEvent.Error -> {
                         Toast.makeText(requireContext(), event.error, Toast.LENGTH_SHORT).show()
+                        binding.lottieProgress.visibility = View.GONE
+                        binding.btnPreviewBtn.visibility = View.VISIBLE
                     }
                     is FarmerListItemViewModel.MainEvent.Success -> {
                         Toast.makeText(requireContext(), event.message, Toast.LENGTH_SHORT).show()

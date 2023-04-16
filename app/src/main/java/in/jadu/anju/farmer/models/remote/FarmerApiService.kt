@@ -11,7 +11,7 @@ import retrofit2.http.*
 
 interface FarmerApiService {
     companion object {
-        const val BASE_URL = "http://192.168.1.3:5000/"
+        const val BASE_URL = "http://34.131.137.247"
     }
 
     @GET("/api/product/{phoneNo}")

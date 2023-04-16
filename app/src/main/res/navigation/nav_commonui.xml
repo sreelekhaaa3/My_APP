@@ -7,11 +7,6 @@
     app:startDestination="@id/selectLanguage">
 
     <fragment
-        android:id="@+id/selectRoleFragment"
-        android:name="in.jadu.anju.commonuis.SelectRoleFragment"
-        android:label="fragment_select_role"
-        tools:layout="@layout/fragment_select_role" />
-    <fragment
         android:id="@+id/fragment_phone_verification"
         android:name="in.jadu.anju.commonuis.PhoneVerificationFragment"
         android:label="phoneVerfication"
@@ -25,12 +20,12 @@
         android:name="in.jadu.anju.commonuis.ConfirmOtpFragment"
         android:label="fragment_confirmotp"
         tools:layout="@layout/fragment_confirmotp">
+
         <action
-            android:id="@+id/action_confirmOtpFragment_to_selectRoleFragment"
-            app:destination="@id/selectRoleFragment" />
-        <action
-            android:id="@+id/action_confirmOtpFragment_to_selectRoleFragment2"
-            app:destination="@id/selectRoleFragment" />
+            android:id="@+id/action_confirmOtpFragment_to_farmerDashBoardFragment2"
+            app:destination="@id/farmerDashBoardFragment2"
+            app:popUpTo="@id/selectLanguage"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/selectLanguage"
@@ -60,6 +55,11 @@
             android:id="@+id/action_farmerDashBoardFragment2_to_walletFragment"
             app:destination="@id/walletFragment"
             app:popUpTo="@id/farmerDashBoardFragment2"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_farmerDashBoardFragment2_to_selectLanguage"
+            app:destination="@id/selectLanguage"
+            app:popUpTo="@id/selectLanguage"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment

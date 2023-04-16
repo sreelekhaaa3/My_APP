@@ -64,6 +64,8 @@ class WalletFragment : Fragment() {
         }
 
         binding.btnSendMoney.setOnClickListener {
+            binding.TransefeeringProgressBar.visibility = View.VISIBLE
+            binding.btnSendMoney.visibility = View.GONE
             transferFund()
         }
         binding.btnAddMoney.setOnClickListener {
@@ -110,21 +112,27 @@ class WalletFragment : Fragment() {
 
                     is WalletConnectViewModel.WalletConnectEvent.WalletTransactionSuccessfully -> {
                         Toast.makeText(requireContext(), "Transaction Successful", Toast.LENGTH_SHORT).show()
+                        hideButtonAndStartProgressHide()
                     }
 
                     is WalletConnectViewModel.WalletConnectEvent.WalletTransactionError -> {
                         Toast.makeText(requireContext(), event.error, Toast.LENGTH_SHORT).show()
+                        hideButtonAndStartProgressHide()
                     }
 
                     is WalletConnectViewModel.WalletConnectEvent.WalletTransactionException -> {
                         Log.d("WalletConnectFragment", "handleEvent: ${event.exception}")
                         Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT).show()
+                        hideButtonAndStartProgressHide()
                     }
                 }
             }
         }
     }
-
+    private fun hideButtonAndStartProgressHide(){
+        binding.btnSendMoney.visibility = View.VISIBLE
+        binding.TransefeeringProgressBar.visibility = View.GONE
+    }
     private fun updateUIOnWalletCreation() {
         binding.lottieAnimationWallet.visibility = View.GONE
         binding.btnSuccess.visibility = View.GONE
@@ -170,31 +178,37 @@ class WalletFragment : Fragment() {
             binding.etPeerWalletAddress.error = "Address cannot be empty"
             Toast.makeText(requireContext(), "Please enter valid details", Toast.LENGTH_SHORT)
                 .show()
+            hideButtonAndStartProgressHide()
             return
         } else if (peerAddress == walletAddress) {
             binding.etPeerWalletAddress.error = "You can't send money to yourself"
             Toast.makeText(requireContext(), "You can't send money to yourself", Toast.LENGTH_SHORT)
                 .show()
+            hideButtonAndStartProgressHide()
             return
         } else if (peerAddress.length < 42) {
             binding.etPeerWalletAddress.error = "Address is less than 42 digits"
             Toast.makeText(requireContext(), "Address is less than 42 digits", Toast.LENGTH_SHORT)
                 .show()
+            hideButtonAndStartProgressHide()
             return
         } else if (peerAddress.length > 42) {
             binding.etPeerWalletAddress.error = "Address is more than 42 digits"
             Toast.makeText(requireContext(), "Address is more than 42 digits", Toast.LENGTH_SHORT)
                 .show()
+            hideButtonAndStartProgressHide()
             return
         } else if (amount.toDouble() > balance) {
             binding.etPeerBalanceSend.error = "You don't have enough balance"
             Toast.makeText(requireContext(), "You don't have enough balance", Toast.LENGTH_SHORT)
                 .show()
+            hideButtonAndStartProgressHide()
             return
         } else {
             lifecycleScope.launch(Dispatchers.IO) {
                 walletConnectViewModel.makeTransaction(amount.toDouble(), peerAddress )
             }
+            Toast.makeText(requireContext(), "Transaction Queued, Please wait...", Toast.LENGTH_SHORT).show()
         }
 
     }

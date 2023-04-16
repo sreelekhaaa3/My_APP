@@ -31,6 +31,7 @@ class SelectLanguageFragment () : Fragment() {
         binding = FragmentSelectLanguageBinding.inflate(inflater,container,false)
         navigateViaHindi()
         navigateViaEnglish()
+        changeAppLanguage()
         auth = FirebaseAuth.getInstance()
         checkUserExist()
         return binding.root
