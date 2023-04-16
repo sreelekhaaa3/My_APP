@@ -92,9 +92,14 @@ The project has been successful in achieving its objectives.
 </p>
 
 
-##Downloads 
+## Downloads 
 - For downloading Farmer apk [Click](https://github.com/Rohit-554/GFG-Agrichain-Farmer/releases/tag/1.0)
 - For download Consumer apk [Click](https://github.com/Rohit-554/GFG-AnJuConsumerApp/releases/tag/0.1)
+
+## Transaction Proofs Over local blockchain Ganache
+<img src = https://user-images.githubusercontent.com/48874687/232332942-0d4efa05-7755-4663-896d-3ba7fb3bbccb.png  width = "600" height = "400">
+
+
 
 ## Future scope
 * **Providing delivery for the purchased goods:** Currently, the project only facilitates the transaction between farmers and consumers. However, providing delivery services for the purchased goods can further enhance the user experience.
