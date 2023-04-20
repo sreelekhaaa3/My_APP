@@ -55,8 +55,9 @@ class WalletFragment : Fragment() {
             updateUIWhenWalletNotCreated()
         }
         binding.btnSuccess.setOnClickListener {
-            binding.lottieAnimationWallet.visibility = View.GONE
+            binding.lottieAnimationWallet.visibility = View.VISIBLE
             binding.btnSuccess.visibility = View.GONE
+            binding.tvSuccessText.text = getString(R.string.creating_wallet_please_wait)
             findNavController().navigate(R.id.action_walletFragment_to_walletConnectFragment)
         }
         binding.fetchBalance.setOnClickListener {

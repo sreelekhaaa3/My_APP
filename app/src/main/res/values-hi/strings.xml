@@ -74,4 +74,5 @@
     <string name="payment_details">भुगतान विवरण</string>
     <string name="wallet_created_successfully">वॉलेट पुनः प्राप्त किया गया</string>
     <string name="deposit_fund">धन जमा करें</string>
+    <string name="creating_wallet_please_wait">पुन: निर्देशित किया जा रहा कृपया प्रतीक्षा करें </string>
 </resources>

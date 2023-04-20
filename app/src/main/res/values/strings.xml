@@ -75,6 +75,7 @@
     <string name="payment_details">Payment Details</string>
     <string name="wallet_created_successfully">Wallet Retrieved</string>
     <string name="deposit_fund">Deposit Fund</string>
+    <string name="creating_wallet_please_wait">Redirecting Please wait for a while…</string>
 
 
 </resources>

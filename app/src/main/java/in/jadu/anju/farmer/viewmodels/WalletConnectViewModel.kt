@@ -40,7 +40,7 @@ class WalletConnectViewModel @Inject constructor() : ViewModel() {
     }
 
     private fun connectToWallet() {
-        web3j = Web3j.build(HttpService(BuildConfig.API_KEY))
+        web3j = Web3j.build(HttpService("https://cb03-45-251-234-108.ngrok-free.app"))
         try {
             val clientVersion = web3j!!.web3ClientVersion().sendAsync().get()
             if (!clientVersion.hasError()) {
