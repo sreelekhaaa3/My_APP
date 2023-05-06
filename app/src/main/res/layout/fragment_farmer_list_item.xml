@@ -121,14 +121,17 @@
             android:textSize="16sp" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/harvested_date_input_layout"
             style="@style/TextInputTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:hint="@string/harvested_date_format">
+            android:hint="@string/harvested_date_format"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/harvested_date"
+                android:focusableInTouchMode="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
@@ -150,6 +153,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/expiry_date"
+                android:focusableInTouchMode="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />

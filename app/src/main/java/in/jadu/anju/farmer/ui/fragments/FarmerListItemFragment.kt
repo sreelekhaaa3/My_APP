@@ -1,5 +1,6 @@
 package `in`.jadu.anju.farmer.ui.fragments
 
+import android.Manifest
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.net.Uri
@@ -14,12 +15,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 import `in`.jadu.anju.R
@@ -37,7 +41,6 @@ import java.io.File
 class FarmerListItemFragment : Fragment() {
     private lateinit var binding: FragmentFarmerListItemBinding
     private lateinit var itemList: List<CardView>
-    private val PICK_IMAGE_REQUEST = 1
     private lateinit var auth: FirebaseAuth
     private val farmerListItemViewModel: FarmerListItemViewModel by viewModels()
     private var bundle = Bundle()
@@ -50,8 +53,11 @@ class FarmerListItemFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         selectProductType()
         checkPermission()
-        binding.cvCustomimage.setOnClickListener {
-            openGallery()
+        binding.harvestedDate.setOnClickListener {
+            getDatePicker(binding.harvestedDate)
+        }
+        binding.expiryDate.setOnClickListener {
+            getDatePicker(binding.expiryDate)
         }
         binding.PreviewAddedProduct.setOnClickListener {
             if (isFieldsEmpty()) {
@@ -69,6 +75,19 @@ class FarmerListItemFragment : Fragment() {
                     R.id.action_farmerListItemFragment2_to_farmerPreviewItemListFragment2, bundle
                 )
             }
+        }
+        val pickMedia = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+            if (uri != null) {
+                Log.d("PhotoPicker", "Selected URI: $uri")
+                farmerListItemViewModel.setUri(uri)
+                binding.ivCustomimageselect.setImageURI(uri)
+                binding.tvClicktoupload.text = getString(R.string.image_uploaded)
+            } else {
+                Log.d("PhotoPicker", "No media selected")
+            }
+        }
+        binding.cvCustomimage.setOnClickListener {
+            pickMedia.launch("image/*")
         }
 
         return binding.root
@@ -188,38 +207,39 @@ class FarmerListItemFragment : Fragment() {
         }
     }
 
-    private fun openGallery() {
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(intent, PICK_IMAGE_REQUEST)
-    }
-
-    @Deprecated("Deprecated in Java")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
-            val selectedImageUri = data.data
-            Log.d("ImageUrix", "onActivityResult: $selectedImageUri")
-            if (selectedImageUri != null) {
-                farmerListItemViewModel.setUri(selectedImageUri)
-            }
-
-            binding.ivCustomimageselect.setImageURI(selectedImageUri)
-            binding.tvClicktoupload.text = "Image Uploaded"
-            //cvcustomimage should be disabled
-            binding.cvCustomimage.isEnabled = false
+    private fun getDatePicker(view:TextInputEditText) {
+        val datePicker = MaterialDatePicker.Builder.datePicker().build()
+        datePicker.show(parentFragmentManager, "DatePicker")
+        datePicker.addOnPositiveButtonClickListener {
+            view.setText(datePicker.headerText)
         }
     }
 
     private fun checkPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            if (!Environment.isExternalStorageManager()) {
+            try {
                 val intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
                 intent.addCategory("android.intent.category.DEFAULT")
-                intent.data = Uri.parse(String.format("package:%s", requireActivity().packageName))
-                requireActivity().startActivity(intent, Bundle.EMPTY)
+                intent.data =
+                    Uri.parse(String.format("package:%s", requireActivity().packageName))
+                startActivity(intent, Bundle.EMPTY)
+            } catch (e: Exception) {
+                val intent = Intent()
+                intent.action = Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION
+                startActivity(intent)
             }
+        } else {
+            requestPermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
         }
     }
 
-
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        if (isGranted) {
+        } else {
+            Toast.makeText(requireContext(), getString(R.string.deny_perm_text), Toast.LENGTH_SHORT)
+                .show()
+        }
+    }
 }
