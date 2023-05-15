@@ -11,6 +11,7 @@ import `in`.jadu.anju.utils.Constants
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import org.bouncycastle.jce.provider.BouncyCastleProvider
 import org.web3j.crypto.Credentials
 import org.web3j.crypto.WalletUtils
 import org.web3j.protocol.Web3j
@@ -23,6 +24,8 @@ import org.web3j.utils.Convert
 import java.io.File
 import java.math.BigDecimal
 import java.math.BigInteger
+import java.security.Provider
+import java.security.Security
 import javax.inject.Inject
 
 @HiltViewModel
@@ -37,10 +40,11 @@ class WalletConnectViewModel @Inject constructor() : ViewModel() {
 
     init {
         connectToWallet()
+        setupBouncyCastle()
     }
 
     private fun connectToWallet() {
-        web3j = Web3j.build(HttpService("https://cb03-45-251-234-108.ngrok-free.app"))
+        web3j = Web3j.build(HttpService("https://eth-sepolia.g.alchemy.com/v2/90tQ5woHcI8ey8xPwOe-apkcJV1PLXoy"))
         try {
             val clientVersion = web3j!!.web3ClientVersion().sendAsync().get()
             if (!clientVersion.hasError()) {
@@ -87,6 +91,13 @@ class WalletConnectViewModel @Inject constructor() : ViewModel() {
         }
 
     }
+    fun getPrivateKey():String {
+        Log.d("getprivatekey", "getprivatekey: ${credential!!.ecKeyPair.privateKey.toString(16)}")
+        val privateKey = credential!!.ecKeyPair.privateKey.toString(16)
+        //check if private key is null
+        return privateKey
+    }
+
 
 
     private fun checkIfWalletAlreadyCreated(file: File, password: String):Boolean {
@@ -150,6 +161,17 @@ class WalletConnectViewModel @Inject constructor() : ViewModel() {
             DefaultGasProvider.GAS_LIMIT,
             BigInteger.valueOf(20000000000L),
         ).send()
+    }
+
+    private fun setupBouncyCastle() {
+        val provider: Provider = Security.getProvider(BouncyCastleProvider.PROVIDER_NAME)
+            ?:
+            return
+        if (provider.javaClass == BouncyCastleProvider::class.java) {
+            return
+        }
+        Security.removeProvider(BouncyCastleProvider.PROVIDER_NAME)
+        Security.insertProviderAt(BouncyCastleProvider(), 1)
     }
 
     sealed class WalletConnectEvent {

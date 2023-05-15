@@ -1,7 +1,6 @@
 package `in`.jadu.anju.farmer.ui.fragments
 
 import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -18,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import `in`.jadu.anju.R
 import `in`.jadu.anju.databinding.FragmentWalletBinding
+import `in`.jadu.anju.farmer.viewmodels.ContractOperationViewModel
 import `in`.jadu.anju.farmer.viewmodels.WalletConnectViewModel
 import `in`.jadu.anju.kvstorage.KvStorage
 import kotlinx.coroutines.Dispatchers
@@ -36,6 +36,7 @@ class WalletFragment : Fragment() {
     private lateinit var walletAddress: String
     private var isWalletCreated: Boolean = false
     private val walletConnectViewModel: WalletConnectViewModel by viewModels()
+    private val contractConnectViewModel: ContractOperationViewModel by viewModels()
     private var balance = 0.0
 
     override fun onCreateView(
@@ -47,7 +48,6 @@ class WalletFragment : Fragment() {
         walletPassword = KvStorage.storageGetString("walletPassword").toString()
         walletAddress = KvStorage.storageGetString("walletAddress").toString()
         isWalletCreated = KvStorage.storageGetBoolean("isWalletCreated")
-
         if (isWalletCreated) {
             updateUIOnWalletCreation()
             handleEvent()
@@ -72,9 +72,13 @@ class WalletFragment : Fragment() {
         binding.btnAddMoney.setOnClickListener {
             depositFund()
         }
-
+        setupContractOperation(walletConnectViewModel.getPrivateKey())
         return binding.root
     }
+    fun setupContractOperation(privateKey: String) {
+        contractConnectViewModel.deployContract(privateKey,requireContext())
+    }
+
 
     fun handleEvent() {
         lifecycleScope.launch {

@@ -23,7 +23,7 @@
 
         <action
             android:id="@+id/action_confirmOtpFragment_to_farmerDashBoardFragment2"
-            app:destination="@id/farmerDashBoardFragment2"
+            app:destination="@id/farmerProductList"
             app:popUpTo="@id/selectLanguage"
             app:popUpToInclusive="true" />
     </fragment>
@@ -37,24 +37,16 @@
             app:popUpTo="@id/selectLanguage"
             app:popUpToInclusive="true"
             />
-        <action
-            android:id="@+id/action_selectLanguage_to_farmerDashBoardFragment2"
-            app:destination="@id/farmerDashBoardFragment2"
-            app:popUpTo="@id/selectLanguage"
-            app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:id="@+id/farmerDashBoardFragment2"
-        android:name="in.jadu.anju.farmer.ui.fragments.FarmerDashBoardFragment"
-        android:label="fragment_farmer_dash_board"
-        tools:layout="@layout/fragment_farmer_dash_board" >
-        <action
-            android:id="@+id/action_farmerDashBoardFragment2_to_farmerListItemFragment2"
-            app:destination="@id/farmerListItemFragment2" />
+        android:id="@+id/farmerProductList"
+        android:name="in.jadu.anju.farmer.ui.fragments.FarmerProductList"
+        android:label="Product List"
+        tools:layout="@layout/fragment_farmer_product_list" >
         <action
             android:id="@+id/action_farmerDashBoardFragment2_to_walletFragment"
             app:destination="@id/walletFragment"
-            app:popUpTo="@id/farmerDashBoardFragment2"
+            app:popUpTo="@id/farmerProductList"
             app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_farmerDashBoardFragment2_to_selectLanguage"
@@ -92,8 +84,8 @@
         tools:layout="@layout/fragment_success_listing" >
         <action
             android:id="@+id/action_successListingFragment_to_farmerDashBoardFragment2"
-            app:destination="@id/farmerDashBoardFragment2"
-            app:popUpTo="@id/farmerDashBoardFragment2"
+            app:destination="@id/farmerProductList"
+            app:popUpTo="@id/farmerProductList"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -117,4 +109,26 @@
             app:popUpTo="@id/walletConnectFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/farmerDashboard"
+        android:name="in.jadu.anju.farmer.ui.fragments.FarmerDashboard"
+        android:label="FarmerDashboard" >
+        <action
+            android:id="@+id/action_farmerDashboard_to_farmerProductList"
+            app:destination="@id/farmerProductList" />
+        <action
+            android:id="@+id/action_farmerDashboard_to_farmerListItemFragment"
+            app:destination="@id/farmerListItemFragment2" />
+        <action
+            android:id="@+id/action_farmerDashboard_to_walletFragment"
+            app:destination="@id/walletFragment" />
+        <action
+            android:id="@+id/action_farmerDashboard_to_allOrdersFragment"
+            app:destination="@id/allOrdersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allOrdersFragment"
+        android:name="in.jadu.anju.farmer.ui.fragments.AllOrdersFragment"
+        android:label="fragment_all_orders"
+        tools:layout="@layout/fragment_all_orders" />
 </navigation>

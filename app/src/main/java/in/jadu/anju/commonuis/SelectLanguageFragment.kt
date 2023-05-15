@@ -1,22 +1,18 @@
 package `in`.jadu.anju.commonuis
 
-import android.app.Application
-import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 import `in`.jadu.anju.R
 import `in`.jadu.anju.databinding.FragmentSelectLanguageBinding
 import `in`.jadu.anju.kvstorage.KvStorage
-import java.lang.reflect.Constructor
-import java.util.*
+import java.util.Locale
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -36,6 +32,7 @@ class SelectLanguageFragment () : Fragment() {
         checkUserExist()
         return binding.root
     }
+
 
 
 
@@ -82,7 +79,12 @@ class SelectLanguageFragment () : Fragment() {
     private fun checkUserExist(){
         val currentUser = auth.currentUser
         if(currentUser != null){
-            findNavController().navigate(R.id.action_selectLanguage_to_farmerDashBoardFragment2)
+            findNavController().navigate(R.id.farmerDashboard)
         }
     }
+    interface backPressedListener {
+        fun onBackPressed()
+    }
+
+
 }

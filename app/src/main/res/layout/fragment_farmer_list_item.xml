@@ -14,23 +14,26 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins_medium"
             android:text="@string/select_product_type"
             android:textColor="@color/primary_text_color"
             android:textSize="16sp" />
 
         <include layout="@layout/fragment_product_type"
-            android:id="@+id/fragment_product_type" />
+            android:id="@+id/fragment_product_type"
             />
+
 
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/add_product_name"
+            android:fontFamily="@font/poppins_medium"
             android:textColor="@color/primary_text_color"
             android:textSize="16sp" />
 
@@ -52,14 +55,16 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/poppins_medium"
             android:text="@string/add_photo_product"
             android:textColor="@color/primary_text_color"
             android:textSize="16sp" />
 
-        <androidx.cardview.widget.CardView
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/cv_customimage"
             app:cardCornerRadius="10dp"
+            android:gravity="start"
             android:layout_width="match_parent"
             android:layout_height="128dp"
             android:layout_margin="15dp">
@@ -87,14 +92,16 @@
                     android:layout_below="@id/iv_customimageselect"
                     android:layout_centerHorizontal="true"
                     android:text="@string/click_here"
+                    android:fontFamily="@font/poppins"
                     android:textColor="@color/primary_text_color" />
             </RelativeLayout>
-        </androidx.cardview.widget.CardView>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/poppins_medium"
             android:text="@string/add_product_details"
             android:textColor="@color/primary_text_color"
             android:textSize="16sp" />
@@ -103,20 +110,25 @@
             style="@style/TextInputTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp">
+            android:layout_margin="15dp"
+            android:hint="eg. Tomato is a red fruit"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/product_description"
                 android:layout_width="match_parent"
-                android:layout_height="128dp"
-                android:inputType="text" />
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:scrollHorizontally="false"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:text="@string/harvested_date"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/_5_add_seeding_date"
             android:textColor="@color/primary_text_color"
             android:textSize="16sp" />
 
@@ -126,7 +138,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:hint="@string/harvested_date_format"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -140,7 +151,8 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/poppins_medium"
             android:text="@string/expiry_date"
             android:textColor="@color/primary_text_color"
             android:textSize="16sp" />
@@ -149,7 +161,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:hint="@string/harvested_date_format">
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/expiry_date"
@@ -162,7 +174,8 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/poppins_medium"
             android:text="@string/price"
             android:textColor="@color/primary_text_color"
             android:textSize="16sp" />
@@ -182,12 +195,35 @@
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/_8_add_farm_location"
+            android:textColor="@color/primary_text_color"
+            android:textSize="16sp" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/farm_location"
+                android:focusableInTouchMode="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/PreviewAddedProduct"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@drawable/langbuttondesign"
-            android:layout_margin="15dp"
+            android:layout_margin="16dp"
             android:textColor="@color/white"
             android:text="@string/preview_product"
             android:fontFamily="@font/lato_bold"

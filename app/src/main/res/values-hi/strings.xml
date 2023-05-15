@@ -27,7 +27,7 @@
     <string name="add_product_name">2. उत्पाद का नाम जोड़ें</string>
     <string name="eg_tomato">उदाहरण: टमाटर</string>
     <string name="harvested_date">5. उत्पाद की उत्पादन तिथि जोड़ें</string>
-    <string name="harvested_date_format">उदाहरण: 08–04–2023</string>
+    <string name="harvested_date_format">उदाहरण: 08 Apr 2023</string>
     <string name="expiry_date">6. उत्पाद की समाप्ति तिथि जोड़ें</string>
     <string name="price">7. उत्पाद की मूल्य जोड़ें</string>
     <string name="eg_40">उदाहरण: ₹40</string>
@@ -38,7 +38,7 @@
     <string name="product_description">4. उत्पाद का विवरण</string>
     <string name="_harvested_date">5. उत्पाद की उत्पादन तिथि</string>
     <string name="_expiry_date">6. उत्पाद की समाप्ति तिथि</string>
-    <string name="_price">7. उत्पाद की मूल्य</string>
+    <string name="_price">8. उत्पाद की मूल्य</string>
     <string name="confirm_and_add_product">पुष्टि करें और जोड़ें</string>
     <string name="searching_text_consumers">सब्जियां, फल , दूध आदि की खोज ?</string>
     <string name="subtitle_search_text">हमने आसान कर दिया</string>
@@ -52,7 +52,7 @@
     <string name="product_listed">उत्पाद सफलतापूर्वक जोड़ा गया</string>
     <string name="description">विवरण</string>
     <string name="expire_date">समाप्ति तिथि</string>
-    <string name="edit_details">विवरण संपादित करें</string>
+    <string name="edit_details">विवरण संपादित करें?</string>
     <string name="wallet_not_created">अपने वॉलेट नहीं बनाया है अभी तक </string>
     <string name="create_wallet">वॉलेट बनाये</string>
     <string name="enter_wallet_details">अपने वॉलेट का नाम और वॉलेट का विवरण दर्ज करें</string>
@@ -77,4 +77,6 @@
     <string name="creating_wallet_please_wait">पुन: निर्देशित किया जा रहा कृपया प्रतीक्षा करें </string>
     <string name="image_uploaded">तस्वीर अपलोड हो गई</string>
     <string name="deny_perm_text">कृपया तस्वीर अपलोड करने की अनुमति दें</string>
+    <string name="_5_add_seeding_date">5. बीज लगाने की तिथि जोड़ें</string>
+    <string name="_8_add_farm_location">8. खेत का स्थान जोड़ें</string>
 </resources>

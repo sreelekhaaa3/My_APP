@@ -7,7 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
+    <color name="surface">#FFFFFF</color>
 <!--    My Colors -->
     <color name="primary_text_color">#000000</color>
     <color name="inverse_icon_color">#FFFFFF</color>
@@ -16,5 +16,9 @@
     <color name="ErrorColor">#B3261E</color>
     <color name="blueColor">#59A5D8</color>
     <color name="whitedull">#F8F8F8</color>
+    <color name="lightBlue">#2859A5D8</color>
+    <color name="link_color">#0044CC</color>
+    <color name="defaultDark">#FFFFFF</color>
+    <color name="gradient">#59A5D8</color>
     <color name="TextCopyBackground">#23CE6B</color>
 </resources>

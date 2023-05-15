@@ -3,97 +3,477 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".farmer.ui.fragments.FarmerDashBoardFragment">
+    >
+
 
 <!--    Lottie animation above the guideline -->
     <ProgressBar
         android:id="@+id/loadwalletprogress"
-        android:layout_margin="10dp"
-        android:visibility="gone"
+        android:layout_margin="12dp"
+        android:visibility="invisible"
+        android:indeterminateTint="@color/surface"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elevation="10dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/circularbackground"
         />
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottieAnimationView"
-        android:layout_width="256dp"
-        android:layout_height="256dp"
-        android:layout_marginTop="16dp"
-        app:lottie_repeatCount="2"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/emptybox"
-         />
 
-<!--    Guideline to separate the animation from the rest of the layout -->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias=".05"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_vertical"
+        >
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/farmer_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hey, John"
+            android:layout_marginStart="16dp"
+            android:textSize="24sp"
+            android:fontFamily="@font/lato_bold"
+            android:textColor="@color/white"
+            />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dashboard_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/farmer_name"
+            android:layout_marginStart="16sp"
+            android:textSize="44sp"
+            android:text="Dashboard"
+            android:fontFamily="@font/lato_bold"
+            android:textColor="@color/white"
+            android:layout_marginBottom="12dp"
+            />
+
+    </RelativeLayout>
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4"/>
-
-<!--    Textview to display the title -->
-    <TextView
-        android:id="@+id/tvTitle"
-        android:padding="10dp"
-        android:foregroundGravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/noProductsAdded"
-        android:textColor="@color/primary_text_color"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guideline" />
-
-<!--    button to add item -->
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/AddItemButton"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@drawable/langbuttondesign"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:text="@string/add_product"
-        android:textAllCaps="false"
-        app:layout_constraintVertical_bias="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/rvFarmerDashBoard"
-        tools:listitem="@layout/item_list_of_farmer"
-        android:visibility="visible"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25"
         />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/bottombackgroundcurved"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.07"
+            />
+        <LinearLayout
+            android:id="@+id/ll1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guideline2"
+            android:baselineAligned="false">
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                >
+                <ImageView
+                    android:id="@+id/iv_cirucular1"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/circularbackground"
+                    />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/all_orders_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:layout_alignStart="@id/iv_cirucular1"
+                    android:layout_alignEnd="@id/iv_cirucular1"
+                    android:layout_alignTop="@id/iv_cirucular1"
+                    android:layout_alignBottom="@id/iv_cirucular1"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/circularbackground"
+                    android:src="@drawable/hand_truck" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/all_orders_btn"
+                    android:gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/primary_text_color"
+                    android:fontFamily="@font/poppins"
+                    android:text="All Orders"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                >
+                <ImageView
+                    android:id="@+id/iv_cirucular"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/circularbackground"
+                    />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/newOrders"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:layout_alignStart="@id/iv_cirucular"
+                    android:layout_alignEnd="@id/iv_cirucular"
+                    android:layout_alignTop="@id/iv_cirucular"
+                    android:layout_alignBottom="@id/iv_cirucular"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/circularbackground"
+                    android:src="@drawable/notification" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_cirucular"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:textColor="@color/primary_text_color"
+                    android:fontFamily="@font/poppins"
+                    android:text="New Orders"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                >
+                <ImageView
+                    android:id="@+id/iv_cirucular3"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/circularbackground"
+                    />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/lst_new_product"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:padding="12dp"
+                    android:layout_alignStart="@id/iv_cirucular3"
+                    android:layout_alignEnd="@id/iv_cirucular3"
+                    android:layout_alignTop="@id/iv_cirucular3"
+                    android:layout_alignBottom="@id/iv_cirucular3"
+                    android:background="@drawable/circularbackground"
+                    android:src="@drawable/addtocart" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_cirucular3"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:textColor="@color/primary_text_color"
+                    android:fontFamily="@font/poppins"
+                    android:text="List New"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll1"
+            android:baselineAligned="false">
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                >
+                <ImageView
+                    android:id="@+id/iv_cirucular4"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/circularbackground"
+                    />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/earnings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:layout_alignStart="@id/iv_cirucular4"
+                    android:layout_alignEnd="@id/iv_cirucular4"
+                    android:layout_alignTop="@id/iv_cirucular4"
+                    android:layout_alignBottom="@id/iv_cirucular4"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/rupees_charity" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/earnings"
+                    android:gravity="center"
+                    android:layout_marginTop="2dp"
+
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/primary_text_color"
+                    android:fontFamily="@font/poppins"
+                    android:text="Earnings"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                >
+                <ImageView
+                    android:id="@+id/iv_cirucular5"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/circularbackground"
+                    />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/product_lsts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:layout_alignStart="@id/iv_cirucular5"
+                    android:layout_alignEnd="@id/iv_cirucular5"
+                    android:layout_alignTop="@id/iv_cirucular5"
+                    android:layout_alignBottom="@id/iv_cirucular5"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/circularbackground"
+                    android:src="@drawable/task_list" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/product_lsts"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/primary_text_color"
+                    android:fontFamily="@font/poppins"
+                    android:text="Product List"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                >
+                <ImageView
+                    android:id="@+id/iv_cirucular6"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/circularbackground"
+                    />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/edit_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:padding="12dp"
+                    android:layout_alignStart="@id/iv_cirucular6"
+                    android:layout_alignEnd="@id/iv_cirucular6"
+                    android:layout_alignTop="@id/iv_cirucular6"
+                    android:layout_alignBottom="@id/iv_cirucular6"
+                    android:background="@drawable/circularbackground"
+                    android:src="@drawable/profile" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/edit_profile"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/primary_text_color"
+                    android:fontFamily="@font/poppins"
+                    android:text="Profile"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll2"
+            android:baselineAligned="false">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                >
+                <ImageView
+                    android:id="@+id/iv_cirucular7"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/circularbackground"
+                    />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/check_wallet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:layout_alignStart="@id/iv_cirucular7"
+                    android:layout_alignEnd="@id/iv_cirucular7"
+                    android:layout_alignTop="@id/iv_cirucular7"
+                    android:layout_alignBottom="@id/iv_cirucular7"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/wallet__1_" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/check_wallet"
+                    android:gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/primary_text_color"
+                    android:fontFamily="@font/poppins"
+                    android:text="Wallet"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:visibility="visible"
+                android:layout_margin="10dp"
+                >
+                <ImageView
+                    android:id="@+id/iv_cirucular8"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/circularbackground"
+                    />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/chainUpdateRequest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:layout_alignStart="@id/iv_cirucular8"
+                    android:layout_alignEnd="@id/iv_cirucular8"
+                    android:layout_alignTop="@id/iv_cirucular8"
+                    android:layout_alignBottom="@id/iv_cirucular8"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/blockchain_" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chainUpdateRequest"
+                    android:gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/primary_text_color"
+                    android:fontFamily="@font/poppins"
+                    android:text="Update Req"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                android:visibility="visible"
+                >
+                <ImageView
+                    android:id="@+id/iv_cirucular9"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/circularbackground"
+                    />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/exitApp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:layout_alignStart="@id/iv_cirucular9"
+                    android:layout_alignEnd="@id/iv_cirucular9"
+                    android:layout_alignTop="@id/iv_cirucular9"
+                    android:layout_alignBottom="@id/iv_cirucular9"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/signout__1_" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/exitApp"
+                    android:gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/primary_text_color"
+                    android:fontFamily="@font/poppins"
+                    android:text="Exit"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/ll3"
+            android:layout_margin="8dp"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

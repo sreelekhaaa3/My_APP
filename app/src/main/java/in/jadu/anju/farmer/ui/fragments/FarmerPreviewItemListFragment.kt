@@ -2,6 +2,7 @@ package `in`.jadu.anju.farmer.ui.fragments
 
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import `in`.jadu.anju.databinding.FragmentFarmerPreviewItemListBinding
 import `in`.jadu.anju.farmer.viewmodels.FarmerListItemViewModel
 import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
+import java.io.FileNotFoundException
 
 @AndroidEntryPoint
 class FarmerPreviewItemListFragment : Fragment() {
@@ -23,7 +25,7 @@ class FarmerPreviewItemListFragment : Fragment() {
     private lateinit var binding: FragmentFarmerPreviewItemListBinding
     private var productName: String? = null
     private var productDescription: String? = null
-    private var harvestedDate: String? = null
+    private var seedingDate: String? = null
     private var expiryDate: String? = null
     private var productPrice: String? = null
     private var productType: String? = null
@@ -66,12 +68,13 @@ class FarmerPreviewItemListFragment : Fragment() {
     private fun uploadDataToServer() {
         //upload Data to server
         val imagePart = farmerListItemViewModel.getImagePart(getUriFromPath(getUri!!), requireContext())
+        Log.d("imagepart", "uploadDataToServer: ${imagePart.body}")
         farmerListItemViewModel.createProductRemote(
             productType!!,
             productName!!,
             imagePart,
             productDescription!!,
-            harvestedDate!!,
+            seedingDate!!,
             expiryDate!!,
             productPrice!!
         )
@@ -84,20 +87,30 @@ class FarmerPreviewItemListFragment : Fragment() {
     private fun setPreviewData() {
         productName = arguments?.getString("productName")
         productDescription = arguments?.getString("productDescription")
-        harvestedDate = arguments?.getString("harvestedDate")
+        seedingDate = arguments?.getString("harvestedDate")
         expiryDate = arguments?.getString("expiryDate")
         productPrice = arguments?.getString("productPrice")
         productType = arguments?.getString("productType")
         getUri = arguments?.getString("ImageUri")
+        val farmLocation = arguments?.getString("farmLocation")
         binding.apply {
             tvProductType.text = productType
-            tvProductName.text = productName
-            tvProductDescription.text = productDescription
-            tvHarvestedDate.text = harvestedDate
-            tvExpiryDate.text = expiryDate
-            tvProductPrice.text = productPrice
-            ivCustomimage.setImageURI(getUriFromPath(getUri!!))
+            tvProductName.setText(productName)
+            tvProductDescription.setText(productDescription)
+            tvHarvestedDate.setText(seedingDate)
+            tvExpiryDate.setText(expiryDate)
+            tvProductPrice.setText(productPrice)
+            ivCustomimageselect.setImageURI(getUriFromPath(getUri!!))
             ivVegetables.setImageURI(getUriFromPath(getUri!!))
+            tvFarmLocation.setText(farmLocation)
+
+            tvProductName.keyListener = null
+            tvProductDescription.keyListener = null
+            tvHarvestedDate.keyListener = null
+            tvExpiryDate.keyListener = null
+            tvProductPrice.keyListener = null
+            tvFarmLocation.keyListener = null
+
         }
     }
 

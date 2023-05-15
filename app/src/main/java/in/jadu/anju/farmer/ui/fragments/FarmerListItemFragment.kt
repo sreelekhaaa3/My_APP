@@ -1,13 +1,10 @@
 package `in`.jadu.anju.farmer.ui.fragments
 
 import android.Manifest
-import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.Environment
-import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -22,6 +19,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
@@ -32,10 +30,6 @@ import `in`.jadu.anju.farmer.models.dtos.ListItemTypes
 import `in`.jadu.anju.farmer.viewmodels.FarmerListItemViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import okhttp3.MediaType
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import java.io.File
 
 @AndroidEntryPoint
 class FarmerListItemFragment : Fragment() {
@@ -52,7 +46,7 @@ class FarmerListItemFragment : Fragment() {
         binding = FragmentFarmerListItemBinding.inflate(inflater, container, false)
         auth = FirebaseAuth.getInstance()
         selectProductType()
-        checkPermission()
+
         binding.harvestedDate.setOnClickListener {
             getDatePicker(binding.harvestedDate)
         }
@@ -87,11 +81,24 @@ class FarmerListItemFragment : Fragment() {
             }
         }
         binding.cvCustomimage.setOnClickListener {
-            pickMedia.launch("image/*")
+            if(!farmerListItemViewModel.isManageStoragePermissionGranted(requireContext())){
+                requestPermission()
+            }else{
+                pickMedia.launch("image/*")
+            }
+        }
+        binding.farmLocation.setOnClickListener {
+            if(!farmerListItemViewModel.checkLocationPermission()){
+              requestPermissionLauncherForLocation.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+            }else{
+                farmerListItemViewModel.getLastLocation()
+                binding.farmLocation.setText(farmerListItemViewModel.locality)
+            }
         }
 
         return binding.root
     }
+
 
     private fun selectProductType() {
         binding.fragmentProductType.apply {
@@ -102,26 +109,26 @@ class FarmerListItemFragment : Fragment() {
         var selectedCardViewIndex: Int = -1
         itemList.forEachIndexed { index, itemView ->
             itemView.setOnClickListener {
+                val cardview = itemView as MaterialCardView
                 if (selectedCardViewIndex == index) {
                     // if the card view is already selected, reset its background
-                    itemView.background =
-                        ContextCompat.getDrawable(requireContext(), R.drawable.resetcardviewborder)
-                    itemView.cardElevation = 10f
+                    itemView.background = ContextCompat.getDrawable(requireContext(), R.drawable.resetcardviewborder)
                     selectedCardViewIndex = -1
+                    cardview.isChecked = false
                 } else {
                     // deselect the previously selected card view
-                    selectedCardViewIndex.takeIf { it != -1 }?.let {
-                        itemList[it].background = ContextCompat.getDrawable(
+                    selectedCardViewIndex.takeIf { it != -1 }?.let { prevIndex ->
+                        val prevView = itemList[prevIndex]
+                        prevView.background = ContextCompat.getDrawable(
                             requireContext(), R.drawable.resetcardviewborder
                         )
-                        itemList[it].cardElevation = 10f
+                        (prevView as? MaterialCardView)?.isChecked = false
                     }
                     // select the current card view and set its background to the border drawable
-                    itemView.background =
-                        ContextCompat.getDrawable(requireContext(), R.drawable.cardviewborder)
-                    itemView.cardElevation = 20f
+                    itemView.background = ContextCompat.getDrawable(requireContext(), R.drawable.cardviewborder)
                     selectedCardViewIndex = index
                     farmerListItemViewModel.setIndex(index)
+                    cardview.isChecked = true
                 }
             }
         }
@@ -147,6 +154,7 @@ class FarmerListItemFragment : Fragment() {
         val expiryDate = binding.expiryDate.text.toString()
         val productPrice = binding.productPrice.text.toString()
         var productType = ""
+        val farmLocation = binding.farmLocation.text.toString()
         //get user phone number
 
         when (farmerListItemViewModel.getIndex()) {
@@ -186,7 +194,8 @@ class FarmerListItemFragment : Fragment() {
             "expiryDate" to expiryDate,
             "productPrice" to productPrice,
             "productType" to productType,
-            "ImageUri" to farmerListItemViewModel.getUri().toString()
+            "farmLocation" to farmLocation,
+            "ImageUri" to farmerListItemViewModel.getUri().toString(),
         )
 
 
@@ -215,7 +224,7 @@ class FarmerListItemFragment : Fragment() {
         }
     }
 
-    private fun checkPermission() {
+    private fun requestPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             try {
                 val intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
@@ -237,6 +246,20 @@ class FarmerListItemFragment : Fragment() {
         ActivityResultContracts.RequestPermission()
     ) { isGranted ->
         if (isGranted) {
+            Toast.makeText(requireContext(), "Permission Granted", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(requireContext(), getString(R.string.deny_perm_text), Toast.LENGTH_SHORT)
+                .show()
+        }
+    }
+
+    private val requestPermissionLauncherForLocation = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        if (isGranted) {
+            farmerListItemViewModel.getLastLocation()
+            binding.farmLocation.setText(farmerListItemViewModel.locality)
+            Toast.makeText(requireContext(), "Location Detected", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(requireContext(), getString(R.string.deny_perm_text), Toast.LENGTH_SHORT)
                 .show()

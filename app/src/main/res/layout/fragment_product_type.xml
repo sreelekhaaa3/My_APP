@@ -6,7 +6,7 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="10dp"
-    tools:context=".farmer.ui.fragments.framelayoutsUis.ProductType">
+    >
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -15,11 +15,12 @@
         android:layout_marginEnd="8dp"
         android:orientation="horizontal"
         >
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/list_item_01"
             android:layout_width="0dp"
             android:layout_weight="1"
             app:cardElevation = "2dp"
+            android:checkable="true"
             android:background="@drawable/cardview_selector"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
@@ -37,7 +38,7 @@
                 android:id="@+id/iv_vegetables"
                 android:layout_width="128dp"
                 android:layout_height="84dp"
-                android:src="@drawable/vegetables"
+                android:src="@drawable/carrot__1_"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 />
@@ -47,16 +48,18 @@
                 android:layout_height="wrap_content"
                 android:text="@string/vegetables"
                 android:textColor="@color/primary_text_color"
+                android:fontFamily="@font/poppins"
                 android:layout_below="@id/iv_vegetables"
                 android:layout_centerHorizontal="true"
                 />
             </RelativeLayout>
 
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/list_item_02"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:checkable="true"
             android:background="@drawable/cardview_selector"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="10dp"
@@ -74,7 +77,7 @@
                     android:layout_width="128dp"
                     android:layout_height="84dp"
                     android:padding="15dp"
-                    android:src="@drawable/redapple"
+                    android:src="@drawable/apple_icon"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     />
@@ -83,13 +86,15 @@
                     android:layout_height="wrap_content"
                     android:text="@string/fruits"
                     android:textColor="@color/primary_text_color"
+                    android:fontFamily="@font/poppins"
                     android:layout_below="@id/iv_fruits"
                     android:layout_centerHorizontal="true"
                     />
             </RelativeLayout>
 
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:checkable="true"
             android:id="@+id/list_item_03"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -119,12 +124,13 @@
                     android:layout_height="wrap_content"
                     android:text="@string/handloom"
                     android:textColor="@color/primary_text_color"
+                    android:fontFamily="@font/poppins"
                     android:layout_below="@id/iv_handloom"
                     android:layout_centerHorizontal="true"
                     />
             </RelativeLayout>
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
 
 
@@ -137,10 +143,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         >
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/list_item_04"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:checkable="true"
             android:background="@drawable/cardview_selector"
             app:cardElevation = "2dp"
             android:layout_marginStart="10dp"
@@ -157,7 +164,7 @@
                     android:id="@+id/iv_manures"
                     android:layout_width="128dp"
                     android:layout_height="84dp"
-                    android:src="@drawable/garden"
+                    android:src="@drawable/fertilizer"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     />
@@ -166,16 +173,18 @@
                     android:layout_height="wrap_content"
                     android:text="@string/manures"
                     android:textColor="@color/primary_text_color"
+                    android:fontFamily="@font/poppins"
                     android:layout_below="@id/iv_manures"
                     android:layout_centerHorizontal="true"
                     />
             </RelativeLayout>
 
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/list_item_05"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:checkable="true"
             android:background="@drawable/cardview_selector"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
@@ -191,8 +200,8 @@
                     android:id="@+id/iv_dairy"
                     android:layout_width="128dp"
                     android:layout_height="84dp"
-                    android:padding="15dp"
-                    android:src="@drawable/milk_bottle_less"
+                    android:padding="8dp"
+                    android:src="@drawable/milk"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     />
@@ -201,17 +210,19 @@
                     android:layout_height="wrap_content"
                     android:text="@string/dairy"
                     android:textColor="@color/primary_text_color"
+                    android:fontFamily="@font/poppins"
                     android:layout_below="@id/iv_dairy"
                     android:layout_centerHorizontal="true"
                     />
             </RelativeLayout>
 
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/list_item_06"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:padding="5dp"
+            android:checkable="true"
             android:background="@drawable/cardview_selector"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
@@ -227,8 +238,8 @@
                     android:id="@+id/iv_polutry"
                     android:layout_width="128dp"
                     android:layout_height="84dp"
-                    android:padding="15dp"
-                    android:src="@drawable/white_chicken"
+                    android:padding="4dp"
+                    android:src="@drawable/egg"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     />
@@ -237,12 +248,13 @@
                     android:layout_height="wrap_content"
                     android:text="Poultry"
                     android:textColor="@color/primary_text_color"
+                    android:fontFamily="@font/poppins"
                     android:layout_below="@id/iv_polutry"
                     android:layout_centerHorizontal="true"
                     />
             </RelativeLayout>
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
 
 
@@ -255,11 +267,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         >
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/list_item_07"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:checkable="true"
+            android:background="@drawable/cardview_selector"
             app:cardElevation = "2dp"
+            android:elevation="1dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
@@ -268,16 +283,14 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:padding="5dp"
-                android:gravity="center"
-                android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 >
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/iv_customimage"
                     android:layout_width="128dp"
                     android:layout_height="84dp"
-                    android:padding="15dp"
-                    android:src="@drawable/plussign"
+                    android:padding="8dp"
+                    android:src="@drawable/addcustom"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     />
@@ -286,12 +299,89 @@
                     android:layout_height="wrap_content"
                     android:text="@string/add_custom"
                     android:textColor="@color/primary_text_color"
+                    android:fontFamily="@font/poppins"
                     android:layout_below="@id/iv_customimage"
                     android:layout_centerHorizontal="true"
                     />
             </RelativeLayout>
 
+        </com.google.android.material.card.MaterialCardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/list_item_08"
+            android:layout_width="0dp"
+            android:visibility="invisible"
+            android:layout_weight="1"
+            android:background="@drawable/cardview_selector"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation = "2dp"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                >
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_null1"
+                    android:layout_width="128dp"
+                    android:layout_height="84dp"
+                    android:padding="15dp"
+                    android:src="@drawable/milk_bottle_less"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dairy"
+                    android:textColor="@color/primary_text_color"
+                    android:fontFamily="@font/poppins"
+                    android:layout_below="@id/iv_null1"
+                    android:layout_centerHorizontal="true"
+                    />
+            </RelativeLayout>
+
         </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/list_item_09"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:visibility="invisible"
+            android:padding="5dp"
+            android:background="@drawable/cardview_selector"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation = "2dp"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                >
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_null2"
+                    android:layout_width="128dp"
+                    android:layout_height="84dp"
+                    android:padding="15dp"
+                    android:src="@drawable/white_chicken"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Poultry"
+                    android:textColor="@color/primary_text_color"
+                    android:fontFamily="@font/poppins"
+                    android:layout_below="@id/iv_null2"
+                    android:layout_centerHorizontal="true"
+                    />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
 
 
 

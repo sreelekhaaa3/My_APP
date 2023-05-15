@@ -9,21 +9,23 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="156dp"
-            app:cardCornerRadius="5dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="4dp"
             android:layout_margin="10dp"
+            app:cardElevation="4dp"
             >
             <RelativeLayout
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <RelativeLayout
                     android:id="@+id/rl_product_img_name"
                     android:layout_width="wrap_content"
                     android:padding="5dp"
+                    android:layout_centerHorizontal="true"
                     android:layout_height="wrap_content"
                     >
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/image_card_view"
                         android:layout_width="128dp"
                         android:layout_height="128dp"
                         app:cardCornerRadius="20dp"
@@ -43,7 +45,8 @@
                         android:id="@+id/productName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
+                        android:fontFamily="@font/poppins"
+                        android:layout_below="@id/image_card_view"
                         android:layout_centerHorizontal="true"
                         android:layout_marginStart="1dp"
                         android:layout_marginBottom="0dp"
@@ -52,82 +55,98 @@
                         android:textColor="@color/primary_text_color" />
                 </RelativeLayout>
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_product_name"
+
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/rl_product_img_name"
-                    android:text=""
-                    android:textStyle="bold"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginStart="20dp"
-                    android:textColor="@color/primary_text_color"
-                    />
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_product_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/rl_product_img_name"
-                    android:text="pumpkin"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginStart="20dp"
-                    android:textColor="@color/primary_text_color"
-                    />
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/farmer_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/rl_product_img_name"
-                    android:text="₹40/kg"
-                    android:layout_below="@id/tv_product_name"
 
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="20dp"
-                    android:textColor="@color/primary_text_color"
-                    />
+                    android:layout_below="@id/rl_product_img_name"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    >
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_product_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="vegis"
+                        android:visibility="gone"
+                        android:layout_marginStart="4dp"
+                        android:drawablePadding="4dp"
+                        android:drawableStart="@drawable/tag"
+                        android:fontFamily="@font/poppins"
+                        android:textColor="@color/primary_text_color"
+                        />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/farmer_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="₹40/kg"
+                        android:layout_below="@id/tv_product_type"
+                        android:fontFamily="@font/lato_bold"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="16dp"
+                        android:textColor="@color/primary_text_color"
+                        />
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/expiry_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        app:cardCornerRadius="4dp"
+                        android:text="Expiry"
+                        android:backgroundTint="@color/hint_text_color_dark_ui"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textSize="12sp"
+                        android:layout_below="@id/farmer_price"
+                        >
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Expire"
+                            android:padding="2dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/lato_bold"
+                            />
+                    </com.google.android.material.card.MaterialCardView>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_expire_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="15-04-2023"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/lato_bold"
+                        android:layout_below="@id/expiry_tag"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginStart="16dp"
+                        android:textColor="@color/primary_text_color"
+                        />
 
 
+                </RelativeLayout>
 
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/baseline_delete_24"
-                    android:tint="@color/primary_text_color"
-                    />
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_expire"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/farmer_price"
-                    android:layout_toEndOf="@id/rl_product_img_name"
-                    android:text="@string/expire_date"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="20dp"
-                    android:textColor="@color/primary_text_color"
-                    />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_expire_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/farmer_price"
-                    android:layout_toEndOf="@id/tv_expire"
-                    android:text="15-04-2023"
-                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginStart="10dp"
-                    android:textColor="@color/primary_text_color"
-                    />
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/baseline_delete_24"
+                    android:tint="@color/primary_text_color" />
+
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_expire"
+                    android:visibility="gone"
                     android:layout_toEndOf="@id/rl_product_img_name"
                     android:text="@string/description"
                     android:textStyle="bold"
@@ -140,9 +159,9 @@
                     android:id="@+id/tv_description_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_expire"
                     android:layout_toEndOf="@id/tv_description"
                     android:text="@string/description"
+                    android:visibility="gone"
                     android:ellipsize="end"
                     android:maxLines="2"
                     android:layout_marginTop="10dp"

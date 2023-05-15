@@ -10,7 +10,7 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/btn_color</item>
+        <item name="android:statusBarColor">@color/gradient</item>
         <!-- Customize your theme here. -->
     </style>
     <style name="TextViewFont" parent="android:Widget.TextView">

@@ -28,7 +28,7 @@
     <string name="add_product_name">2. Add product Name</string>
     <string name="eg_tomato">eg. Tomato</string>
     <string name="harvested_date">5. Add Harvested/Manufactured Date</string>
-    <string name="harvested_date_format">eg. 08–04–2023</string>
+    <string name="harvested_date_format">eg. 08 Apr 2023</string>
     <string name="expiry_date">6. Add Expiry Date</string>
     <string name="price">7. Set your price</string>
     <string name="eg_40">eg. ₹40</string>
@@ -39,7 +39,7 @@
     <string name="product_description">4. Product Description</string>
     <string name="_harvested_date">5. Harvest/Manufactured Date</string>
     <string name="_expiry_date">6. Expiry Date</string>
-    <string name="_price">7. Price</string>
+    <string name="_price">8. Price</string>
     <string name="confirm_and_add_product">Confirm and Add Product</string>
     <string name="searching_text_consumers">Searching Vegis, Fruits, Dairy …</string>
     <string name="subtitle_search_text">we made this easy for you</string>
@@ -53,7 +53,7 @@
     <string name="product_listed">Product Listed!</string>
     <string name="description">Description</string>
     <string name="expire_date">Expire Date</string>
-    <string name="edit_details">Edit Details</string>
+    <string name="edit_details"><U>Edit Details?</U></string>
     <string name="wallet_not_created">You haven\'t created Wallet yet</string>
     <string name="create_wallet">Create Wallet</string>
     <string name="enter_wallet_details">Enter Wallet Details</string>
@@ -77,7 +77,12 @@
     <string name="deposit_fund">Deposit Fund</string>
     <string name="creating_wallet_please_wait">Redirecting Please wait for a while…</string>
     <string name="image_uploaded">Image Uploaded</string>
-    <string name="deny_perm_text">Please provide permission to upload image</string>
+    <string name="deny_perm_text">Please provide required permission </string>
+    <string name="_5_add_seeding_date">5. Add Seeding Date</string>
+    <string name="_8_add_farm_location">8. Add Farm Location</string>
+    <string name="_5_seeding_date">5. Seeding Date</string>
+    <string name="_7_farm_location">7. Farm Location</string>
+    <string name="farm_location_example">eg. Chandani chowk, Delhi</string>
 
 
 </resources>

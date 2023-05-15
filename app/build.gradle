@@ -79,5 +79,8 @@ dependencies {
     implementation 'org.web3j:core:4.8.7-android'
     implementation 'com.github.bumptech.glide:glide:4.15.1'
 
+    // Location Services
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
+
 
 }
