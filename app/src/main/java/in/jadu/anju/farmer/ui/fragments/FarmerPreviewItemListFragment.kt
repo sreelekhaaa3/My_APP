@@ -14,7 +14,9 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import `in`.jadu.anju.R
 import `in`.jadu.anju.databinding.FragmentFarmerPreviewItemListBinding
+import `in`.jadu.anju.farmer.viewmodels.ContractOperationViewModel
 import `in`.jadu.anju.farmer.viewmodels.FarmerListItemViewModel
+import `in`.jadu.anju.farmer.viewmodels.WalletConnectViewModel
 import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
 import java.io.FileNotFoundException
@@ -22,6 +24,8 @@ import java.io.FileNotFoundException
 @AndroidEntryPoint
 class FarmerPreviewItemListFragment : Fragment() {
     private val farmerListItemViewModel: FarmerListItemViewModel by viewModels()
+    private val contractOperationViewModel: ContractOperationViewModel by viewModels()
+    private val walletConnectViewModel: WalletConnectViewModel by viewModels()
     private lateinit var binding: FragmentFarmerPreviewItemListBinding
     private var productName: String? = null
     private var productDescription: String? = null
@@ -62,9 +66,12 @@ class FarmerPreviewItemListFragment : Fragment() {
                 }
             }
         }
+        setupContractOperation(walletConnectViewModel.getPrivateKey())
         return binding.root
     }
-
+    private fun setupContractOperation(privateKey: String) {
+        contractOperationViewModel.deployContract(privateKey,requireContext())
+    }
     private fun uploadDataToServer() {
         //upload Data to server
         val imagePart = farmerListItemViewModel.getImagePart(getUriFromPath(getUri!!), requireContext())

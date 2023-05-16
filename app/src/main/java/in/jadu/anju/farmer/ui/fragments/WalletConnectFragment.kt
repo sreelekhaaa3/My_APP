@@ -102,6 +102,10 @@ class WalletConnectFragment : Fragment() {
         binding.tvWalletNameValue.text = binding.etEnterWalletName.text.toString()
         binding.tvWalletPasswordValue.text = binding.etEnterWalletPassword.text.toString()
         binding.tvWalletAddressTextValue.text = message
+        binding.etEnterWalletName.isEnabled = false
+        binding.etEnterWalletPassword.isEnabled = false
+        binding.etEnterWalletName.keyListener = null
+        binding.etEnterWalletPassword.keyListener = null
         moveToWalletFragment(message)
     }
 
@@ -119,6 +123,7 @@ class WalletConnectFragment : Fragment() {
         KvStorage.storageSetString("walletAddress", message)
         KvStorage.storageSetBoolean("isWalletCreated", true)
 
+        binding.btnCreateWallet.isActivated = false
         binding.btnCopyAddress.setOnClickListener {
             binding.processingToWallet.visibility = View.VISIBLE
             binding.btnCopyAddress.visibility = View.INVISIBLE

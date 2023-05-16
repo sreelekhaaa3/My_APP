@@ -34,6 +34,7 @@ class ContractOperationViewModel @Inject constructor() : ViewModel() {
     fun deployContract(privateKey: String, context: Context) {
         credentials = org.web3j.crypto.Credentials.create(privateKey)
         kvStorage = KvStorage(context)
+        Log.d("contractAddress", "${kvStorage.storageGetString("contractAddress")}")
         viewModelScope.launch(Dispatchers.IO) {
             if (kvStorage.storageGetString("contractAddress")?.let { isContractDeployed(it) } == true) {
                 contractAddress = kvStorage.storageGetString("contractAddress")!!
@@ -41,17 +42,22 @@ class ContractOperationViewModel @Inject constructor() : ViewModel() {
                 Log.d("retrieveContract", "Contract Retrieved Successfully")
                 _contractOperationEventChannel.send( ContractOperationEvent.ContractOperationMessage("Contract Retrieved Successfully"))
             } else {
-            val deployContract: SupplyChainContract_sol_SupplyChainContract =
-                SupplyChainContract_sol_SupplyChainContract.deploy(
-                    web3, credentials,
-                    gasPrice,
-                    gasLimit
-                ).sendAsync().get()
-            contractAddress = deployContract.contractAddress
-            loadContract(contractAddress)
-            _contractOperationEventChannel.send(ContractOperationEvent.ContractOperationMessage("Contract Deployed Successfully"))
-            kvStorage.storageSetString("contractAddress", contractAddress)
-            Log.d("contractAddress", contractAddress)
+                try {
+                    val deployContract: SupplyChainContract_sol_SupplyChainContract =
+                        SupplyChainContract_sol_SupplyChainContract.deploy(
+                            web3, credentials,
+                            gasPrice,
+                            gasLimit
+                        ).sendAsync().get()
+                    contractAddress = deployContract.contractAddress
+                    Log.d("contractAddressx", contractAddress)
+                    kvStorage.storageSetString("contractAddress", contractAddress)
+                    _contractOperationEventChannel.send(ContractOperationEvent.ContractOperationMessage("Contract Deployed Successfully"))
+                    loadContract(contractAddress)
+                }catch (e: Exception){
+                    Log.d("deployContract", e.message.toString())
+                    _contractOperationEventChannel.send(ContractOperationEvent.ContractOperationError(e.message.toString()))
+                }
             }
         }
 

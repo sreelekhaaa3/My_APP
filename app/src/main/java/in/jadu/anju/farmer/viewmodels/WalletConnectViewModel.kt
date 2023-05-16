@@ -94,7 +94,6 @@ class WalletConnectViewModel @Inject constructor() : ViewModel() {
     fun getPrivateKey():String {
         Log.d("getprivatekey", "getprivatekey: ${credential!!.ecKeyPair.privateKey.toString(16)}")
         val privateKey = credential!!.ecKeyPair.privateKey.toString(16)
-        //check if private key is null
         return privateKey
     }
 

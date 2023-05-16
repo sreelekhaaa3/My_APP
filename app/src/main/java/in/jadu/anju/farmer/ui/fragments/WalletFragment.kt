@@ -21,6 +21,7 @@ import `in`.jadu.anju.farmer.viewmodels.ContractOperationViewModel
 import `in`.jadu.anju.farmer.viewmodels.WalletConnectViewModel
 import `in`.jadu.anju.kvstorage.KvStorage
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
 import javax.inject.Inject
@@ -50,6 +51,7 @@ class WalletFragment : Fragment() {
         isWalletCreated = KvStorage.storageGetBoolean("isWalletCreated")
         if (isWalletCreated) {
             updateUIOnWalletCreation()
+            setupContractOperation(walletConnectViewModel.getPrivateKey())
             handleEvent()
         } else {
             updateUIWhenWalletNotCreated()
@@ -72,10 +74,9 @@ class WalletFragment : Fragment() {
         binding.btnAddMoney.setOnClickListener {
             depositFund()
         }
-        setupContractOperation(walletConnectViewModel.getPrivateKey())
         return binding.root
     }
-    fun setupContractOperation(privateKey: String) {
+    private fun setupContractOperation(privateKey: String) {
         contractConnectViewModel.deployContract(privateKey,requireContext())
     }
 
@@ -129,6 +130,16 @@ class WalletFragment : Fragment() {
                         Log.d("WalletConnectFragment", "handleEvent: ${event.exception}")
                         Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT).show()
                         hideButtonAndStartProgressHide()
+                    }
+                }
+            }
+            contractConnectViewModel.contractOperationEvent.collect{event->
+                when(event){
+                    is ContractOperationViewModel.ContractOperationEvent.ContractOperationMessage ->{
+                        Toast.makeText(requireContext(), "Contract Deployed Successfully", Toast.LENGTH_SHORT).show()
+                    }
+                    is ContractOperationViewModel.ContractOperationEvent.ContractOperationError ->{
+                        Toast.makeText(requireContext(), event.message, Toast.LENGTH_SHORT).show()
                     }
                 }
             }
