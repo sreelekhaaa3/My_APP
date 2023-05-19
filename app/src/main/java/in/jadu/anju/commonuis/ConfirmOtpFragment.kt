@@ -124,7 +124,7 @@ class ConfirmOtpFragment : Fragment() {
         val phoneNumber = currentUser?.phoneNumber.toString().substring(3)
         Log.d("PhoneVerificationFragment", "updateUiAfterVerification: $phoneNumber")
         uploadPhoneNumberToRemoteDatabase(phoneNumber)
-        findNavController().navigate(R.id.action_confirmOtpFragment_to_farmerDashBoardFragment2)
+        findNavController().navigate(R.id.action_confirmOtpFragment_to_farmerDashboard)
     }
 
     private fun uploadPhoneNumberToRemoteDatabase(phoneNumber: String){

@@ -17,23 +17,32 @@ import `in`.jadu.anju.farmer.models.dtos.Product
 import `in`.jadu.anju.farmer.models.dtos.RemoteListTypeBackend
 
 
-class FarmerListAdapter(private val itemTypes: List<Product>) : RecyclerView.Adapter<FarmerListAdapter.FarmerListViewHolder>() {
+class FarmerListAdapter(private val itemTypes: List<Product>,private val listener: OnItemClickListener) :
+    RecyclerView.Adapter<FarmerListAdapter.FarmerListViewHolder>() {
 
 
-//    private var farmerList = emptyList<ListItemTypes>()
-
-    class FarmerListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class FarmerListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val productType: TextView = itemView.findViewById(R.id.tv_product_type)
         val productName: TextView = itemView.findViewById(R.id.productName)
         val productImage: ImageView = itemView.findViewById(R.id.iv_vegetables)
         val productDescription: TextView = itemView.findViewById(R.id.tv_description_text)
-        val tvExpiryDate:TextView = itemView.findViewById(R.id.tv_expire_date)
-        val price:TextView = itemView.findViewById(R.id.farmer_price)
+        val tvExpiryDate: TextView = itemView.findViewById(R.id.tv_expire_date)
+        val price: TextView = itemView.findViewById(R.id.farmer_price)
 
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val productData = itemTypes[position]
+                    listener.onItemClicked(position,productData)
+                }
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FarmerListViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_of_farmer, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_list_of_farmer, parent, false)
         return FarmerListViewHolder(view)
     }
 
@@ -43,7 +52,7 @@ class FarmerListAdapter(private val itemTypes: List<Product>) : RecyclerView.Ada
         holder.productName.text = currentItem.productName.removeSurrounding("\"")
         holder.productDescription.text = currentItem.description.removeSurrounding("\"")
         holder.tvExpiryDate.text = currentItem.productExpire.removeSurrounding("\"")
-        holder.price.text = "₹"+currentItem.productPrice.removeSurrounding("\"") + "/Kg"
+        holder.price.text = "₹" + currentItem.productPrice.removeSurrounding("\"") + "/Kg"
         //use glide to set the image here
         val imageLink = getImageLink(currentItem.productImageUrl.removeSurrounding("\""))
         Glide.with(holder.itemView.context).load(imageLink).into(holder.productImage)
@@ -51,15 +60,16 @@ class FarmerListAdapter(private val itemTypes: List<Product>) : RecyclerView.Ada
     }
 
     override fun getItemCount(): Int {
-        Log.d("Rohit", itemTypes.size.toString())
         return itemTypes.size
     }
 
-    private fun getImageLink(imgId:String): String {
+    private fun getImageLink(imgId: String): String {
         val baseUrl = "https://firebasestorage.googleapis.com/v0/b/productserver-57d88.appspot.com/"
         val imagePath = "o/$imgId?alt=media"
         return baseUrl + imagePath
     }
 
-
+    interface OnItemClickListener {
+        fun onItemClicked(position: Int, productData: Product)
+    }
 }

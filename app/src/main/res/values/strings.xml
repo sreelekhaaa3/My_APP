@@ -84,8 +84,8 @@
     <string name="_7_farm_location">7. Farm Location</string>
     <string name="farm_location_example">eg. Chandani chowk, Delhi</string>
     <string name="detect_automatically"><u>Detect Automatically?</u></string>
-    <string name = "select_expiry_date">Select Expiry Date</string>
-    <string name = "select_planting_date">Select Planting Date</string>
+    <string name="select_expiry_date">Select Expiry Date</string>
+    <string name="select_planting_date">Select Planting Date</string>
     <string name="processingTransaction">We are Processing, Please Wait…</string>
     <string name="download_qr_code">Download QR Code</string>
     <string name="something_went_wrong">Something Went Wrong</string>
