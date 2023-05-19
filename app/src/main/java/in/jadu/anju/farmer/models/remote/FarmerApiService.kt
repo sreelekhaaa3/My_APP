@@ -29,6 +29,8 @@ interface FarmerApiService {
         @Part("description") description: String,
         @Part("productPacked") productPacked: String,
         @Part("productExpire") productExpire: String,
+        @Part("web3Id") web3Id: String,
+        @Part("contractAddress") contractAddress: String,
         @Part("productPrice") productPrice: String,
         @Path("sellerPhoneNo") sellerPhoneNo: String,
         @Part("sellerPhoneNo") sellerPhoneNoPart: RequestBody

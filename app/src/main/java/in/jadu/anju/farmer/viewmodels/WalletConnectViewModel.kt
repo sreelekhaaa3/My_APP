@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import `in`.jadu.anju.BuildConfig
+import `in`.jadu.anju.kvstorage.KvStorage
 import `in`.jadu.anju.utils.Constants
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -37,7 +38,8 @@ class WalletConnectViewModel @Inject constructor() : ViewModel() {
     private var web3j: Web3j? = null
     private val _walletConnectEvent = Channel<WalletConnectEvent>()
     val walletConnectEvent = _walletConnectEvent.receiveAsFlow()
-
+    @Inject
+    lateinit var KvStorage: KvStorage
     init {
         connectToWallet()
         setupBouncyCastle()
@@ -94,6 +96,7 @@ class WalletConnectViewModel @Inject constructor() : ViewModel() {
     fun getPrivateKey():String {
         Log.d("getprivatekey", "getprivatekey: ${credential!!.ecKeyPair.privateKey.toString(16)}")
         val privateKey = credential!!.ecKeyPair.privateKey.toString(16)
+        KvStorage.storageSetString("PrivateKey", privateKey)
         return privateKey
     }
 

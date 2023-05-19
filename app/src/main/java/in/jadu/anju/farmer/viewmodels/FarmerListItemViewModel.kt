@@ -11,6 +11,7 @@ import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
@@ -98,9 +99,16 @@ class FarmerListItemViewModel @Inject constructor(
 
     private fun getFarmLocationFromCoordinates(latitude: Double, longitude: Double) {
         val geocoder = Geocoder(application, Locale.getDefault())
-        val addresses: List<Address> =
-            geocoder.getFromLocation(latitude, longitude, 1) as List<Address>
-        locality = addresses[0].getAddressLine(0)
+        try {
+            val addresses: List<Address> =
+                geocoder.getFromLocation(latitude, longitude, 1) as List<Address>
+            locality = addresses[0].getAddressLine(0)
+        }catch (e:Exception){
+            viewModelScope.launch {
+                mainEventChannel.send(MainEvent.Error(e.toString()))
+            }
+        }
+
     }
 
     fun getFarmerItemList(phoneNo: String) = viewModelScope.launch(Dispatchers.IO) {
@@ -127,6 +135,8 @@ class FarmerListItemViewModel @Inject constructor(
         description: String,
         productPacked: String,
         productExpire: String,
+        web3Id: String,
+        contractAddress: String,
         productPrice: String
     ) = viewModelScope.launch(Dispatchers.IO) {
         try {
@@ -137,6 +147,8 @@ class FarmerListItemViewModel @Inject constructor(
                 description,
                 productPacked,
                 productExpire,
+                web3Id,
+                contractAddress,
                 productPrice,
                 auth.currentUser?.phoneNumber.toString().substring(3)
             )

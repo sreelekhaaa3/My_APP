@@ -29,7 +29,7 @@
     <string name="eg_tomato">eg. Tomato</string>
     <string name="harvested_date">5. Add Harvested/Manufactured Date</string>
     <string name="harvested_date_format">eg. 08 Apr 2023</string>
-    <string name="expiry_date">6. Add Expiry Date</string>
+    <string name="expiry_date">5. Add Expiry Date</string>
     <string name="price">7. Set your price</string>
     <string name="eg_40">eg. ₹40</string>
     <string name="preview_product">Preview</string>
@@ -78,11 +78,23 @@
     <string name="creating_wallet_please_wait">Redirecting Please wait for a while…</string>
     <string name="image_uploaded">Image Uploaded</string>
     <string name="deny_perm_text">Please provide required permission </string>
-    <string name="_5_add_seeding_date">5. Add Seeding Date</string>
+    <string name="_5_add_seeding_date">6. Add Seeding Date</string>
     <string name="_8_add_farm_location">8. Add Farm Location</string>
     <string name="_5_seeding_date">5. Seeding Date</string>
     <string name="_7_farm_location">7. Farm Location</string>
     <string name="farm_location_example">eg. Chandani chowk, Delhi</string>
+    <string name="detect_automatically"><u>Detect Automatically?</u></string>
+    <string name = "select_expiry_date">Select Expiry Date</string>
+    <string name = "select_planting_date">Select Planting Date</string>
+    <string name="processingTransaction">We are Processing, Please Wait…</string>
+    <string name="download_qr_code">Download QR Code</string>
+    <string name="something_went_wrong">Something Went Wrong</string>
+    <string name="downloaded">Downloaded</string>
+    <string name="redownloaded">Download Again?</string>
+
+    <string name="retryDownload">Retry</string>
+    <string name="processing">Processing…</string>
+    <string name="qr_downloaded">QR Code downloaded successfully</string>
 
 
 </resources>

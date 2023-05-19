@@ -9,12 +9,13 @@
 
    <com.airbnb.lottie.LottieAnimationView
        android:id="@+id/lottieAnimationView"
-       android:layout_width="wrap_content"
+       android:layout_width="match_parent"
        android:layout_height="0dp"
        app:lottie_repeatCount="1"
-       app:lottie_rawRes="@raw/confirm"
+       app:lottie_rawRes="@raw/celebration"
        app:lottie_autoPlay="true"
        app:lottie_loop="true"
+       android:visibility="visible"
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintTop_toTopOf="parent"
@@ -22,6 +23,17 @@
        app:layout_constraintVertical_bias=".2"
        app:layout_constraintHeight_percent=".4"
        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/productQr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_success_text"
+        />
 
     <TextView
         android:id="@+id/tv_success_text"
@@ -32,20 +44,80 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp"
         android:textSize="20sp"
-        android:fontFamily="@font/lato_bold"
-        android:textColor="@color/primary_text_color"
+        android:fontFamily="@font/poppins"
+        android:textColor="@color/hint_text_color_dark_ui"
         android:text="@string/product_listed"
         />
 
+<!--    <TextView-->
+<!--        android:id="@+id/processing_text"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fontFamily="@font/poppins_bold"-->
+<!--        android:text="Do not close the app"-->
+<!--        android:textColor="@color/ErrorColor"-->
+<!--        android:textSize="16sp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_success_text" />-->
+
 <!--    create a button below textview -->
+
+   <RelativeLayout
+       android:id="@+id/qr_operation"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       app:layout_constraintTop_toBottomOf="@id/tv_success_text"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       >
+       <ProgressBar
+           android:id="@+id/dnld_progress"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:padding="12dp"
+           android:visibility="gone"
+           app:lottie_autoPlay="true"
+           android:indeterminateTint="@color/white"
+           android:elevation="10dp"
+           android:layout_alignStart="@id/download_qr_code"
+           android:layout_alignEnd="@id/download_qr_code"
+           android:layout_alignTop="@id/download_qr_code"
+           android:layout_alignBottom="@id/download_qr_code"
+           app:lottie_loop="true"
+           app:lottie_rawRes="@raw/progress"
+           />
+       <androidx.appcompat.widget.AppCompatButton
+           android:id="@+id/download_qr_code"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="16dp"
+           android:visibility="visible"
+           android:layout_marginEnd="16dp"
+           android:background="@drawable/langbuttondesign"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           android:layout_marginTop="20dp"
+           android:textSize="20sp"
+           android:fontFamily="@font/lato_bold"
+           android:textColor="@color/white"
+           android:text="@string/download_qr_code"
+           android:textAllCaps="false"
+           />
+
+   </RelativeLayout>
+
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_success"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
+        android:visibility="visible"
         android:layout_marginEnd="15dp"
         android:background="@drawable/langbuttondesign"
-        app:layout_constraintTop_toBottomOf="@id/tv_success_text"
+        app:layout_constraintTop_toBottomOf="@id/qr_operation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp"

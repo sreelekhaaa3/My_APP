@@ -38,6 +38,7 @@
             android:textSize="16sp" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/product_name_input_layout"
             style="@style/TextInputTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,6 +85,16 @@
                     android:layout_alignParentTop="true"
                     android:padding="15dp"
                     android:src="@drawable/add_image" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/warning_img_not_selected"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_alignTop="@id/iv_customimageselect"
+                    android:layout_alignEnd="@id/iv_customimageselect"
+                    android:src="@drawable/baseline_warning_24"
+                    android:padding="2dp"
+                    />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_Clicktoupload"
@@ -107,6 +118,7 @@
             android:textSize="16sp" />
         <!--        create a text input layout and add edit text inside it-->
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/product_description_input_layout"
             style="@style/TextInputTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -123,6 +135,31 @@
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/expiry_date"
+            android:textColor="@color/primary_text_color"
+            android:textSize="16sp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/expiry_date_input_layout"
+            style="@style/TextInputTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/expiry_date"
+                android:focusableInTouchMode="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -153,33 +190,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:fontFamily="@font/poppins_medium"
-            android:text="@string/expiry_date"
-            android:textColor="@color/primary_text_color"
-            android:textSize="16sp" />
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/TextInputTheme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/expiry_date"
-                android:focusableInTouchMode="false"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="@font/poppins_medium"
             android:text="@string/price"
             android:textColor="@color/primary_text_color"
             android:textSize="16sp" />
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/product_price_input_layout"
             style="@style/TextInputTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -190,6 +205,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/product_price"
+                style="@style/TextInputEditTextTheme"
+                android:textCursorDrawable="@drawable/cursor_drawable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number" />
@@ -204,6 +221,7 @@
             android:textColor="@color/primary_text_color"
             android:textSize="16sp" />
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/farm_location_input_layout"
             style="@style/TextInputTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -212,12 +230,22 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/farm_location"
-                android:focusableInTouchMode="false"
+                android:focusableInTouchMode="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/detect_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/link_color"
+            android:drawableStart="@drawable/baseline_location_on_24"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/detect_automatically"
+            />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/PreviewAddedProduct"
             android:layout_width="match_parent"

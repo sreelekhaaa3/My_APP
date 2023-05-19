@@ -1,7 +1,10 @@
 package `in`.jadu.anju.farmer.viewmodels
 
+import android.app.Application
 import android.content.Context
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -11,26 +14,30 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import org.web3j.protocol.Web3j
 import org.web3j.protocol.core.DefaultBlockParameterName
 import org.web3j.protocol.http.HttpService
-import org.web3j.tx.Contract
-import org.web3j.tx.gas.DefaultGasProvider
 import java.math.BigInteger
 import javax.inject.Inject
 
 @HiltViewModel
-class ContractOperationViewModel @Inject constructor() : ViewModel() {
+class ContractOperationViewModel @Inject constructor(private val application: Application) : ViewModel() {
     private  var web3: Web3j = Web3j.build(HttpService("https://eth-sepolia.g.alchemy.com/v2/90tQ5woHcI8ey8xPwOe-apkcJV1PLXoy"))
     private lateinit var contractAddress: String
     private lateinit var credentials: org.web3j.crypto.Credentials
     private lateinit var kvStorage: KvStorage
     private val _contractOperationEventChannel = Channel<ContractOperationEvent>()
     private val gasLimit = BigInteger.valueOf(6721975)
-    private val gasPrice = BigInteger.valueOf(20000000000)
+    private val gasPrice = BigInteger.valueOf(2200000000)
     val contractOperationEvent = _contractOperationEventChannel.receiveAsFlow()
-
+//    var contractInstance: SupplyChainContract_sol_SupplyChainContract? = null
+    private val _contractInstance = MutableLiveData<SupplyChainContract_sol_SupplyChainContract?>()
+    val contractInstance: LiveData<SupplyChainContract_sol_SupplyChainContract?> = _contractInstance
+    init {
+        kvStorage = KvStorage(application)
+        val privateKey = kvStorage.storageGetString("PrivateKey")
+        deployContract(privateKey!!, application)
+    }
     fun deployContract(privateKey: String, context: Context) {
         credentials = org.web3j.crypto.Credentials.create(privateKey)
         kvStorage = KvStorage(context)
@@ -60,9 +67,6 @@ class ContractOperationViewModel @Inject constructor() : ViewModel() {
                 }
             }
         }
-
-
-
     }
 
     private fun loadContract(contractAddress: String) {
@@ -74,12 +78,19 @@ class ContractOperationViewModel @Inject constructor() : ViewModel() {
                     gasPrice,
                     gasLimit
                 )
+            _contractInstance.postValue(contract)
+            contractInstance()
             viewModelScope.launch(Dispatchers.IO) {
-                Log.d("isValid", contract.isValid.toString())
+                Log.d("isValid", contract.toString())
             }
         }
-
     }
+
+    fun contractInstance(): SupplyChainContract_sol_SupplyChainContract? {
+        Log.d("contractInstance", contractInstance.toString())
+        return contractInstance.value
+    }
+
 
     private fun isContractDeployed(contractAddress: String): Boolean {
         return if (contractAddress.isEmpty()) false

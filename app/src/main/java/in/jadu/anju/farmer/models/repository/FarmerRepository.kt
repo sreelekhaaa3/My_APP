@@ -20,6 +20,8 @@ class FarmerRepository @Inject constructor(private val farmerApiService: FarmerA
         description: String,
         productPacked: String,
         productExpire: String,
+        web3Id: String,
+        contractAddress: String,
         productPrice: String,
         phone: String
     ) = farmerApiService.createProduct(
@@ -29,6 +31,8 @@ class FarmerRepository @Inject constructor(private val farmerApiService: FarmerA
             description,
             productPacked,
             productExpire,
+            web3Id,
+            contractAddress,
             productPrice,
             phone,
             RequestBody.create("text/plain".toMediaTypeOrNull(), phone)

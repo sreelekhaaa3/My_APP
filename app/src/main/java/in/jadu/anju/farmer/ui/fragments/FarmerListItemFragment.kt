@@ -2,6 +2,8 @@ package `in`.jadu.anju.farmer.ui.fragments
 
 import android.Manifest
 import android.content.Intent
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -20,6 +22,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointBackward
+import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
@@ -27,42 +32,57 @@ import dagger.hilt.android.AndroidEntryPoint
 import `in`.jadu.anju.R
 import `in`.jadu.anju.databinding.FragmentFarmerListItemBinding
 import `in`.jadu.anju.farmer.models.dtos.ListItemTypes
+import `in`.jadu.anju.farmer.viewmodels.ContractOperationViewModel
 import `in`.jadu.anju.farmer.viewmodels.FarmerListItemViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
 class FarmerListItemFragment : Fragment() {
     private lateinit var binding: FragmentFarmerListItemBinding
     private lateinit var itemList: List<CardView>
     private lateinit var auth: FirebaseAuth
+    private var dateInMillis:Long = 0L
+    private val contractOperationViewModel: ContractOperationViewModel by viewModels()
     private val farmerListItemViewModel: FarmerListItemViewModel by viewModels()
     private var bundle = Bundle()
+    private var _isImageImported = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
+        contractOperationViewModel
         binding = FragmentFarmerListItemBinding.inflate(inflater, container, false)
         auth = FirebaseAuth.getInstance()
         selectProductType()
 
         binding.harvestedDate.setOnClickListener {
-            getDatePicker(binding.harvestedDate)
+            getSeedingDate(binding.harvestedDate)
         }
         binding.expiryDate.setOnClickListener {
-            getDatePicker(binding.expiryDate)
+            getExpiryDate(binding.expiryDate)
         }
         binding.PreviewAddedProduct.setOnClickListener {
             if (isFieldsEmpty()) {
                 Toast.makeText(
                     requireContext(), getString(R.string.Fields_not_empty), Toast.LENGTH_SHORT
                 ).show()
+//                isDescriptionEmpty()
+//                isProductNameEmpty()
+//                isHarvestedDateEmpty()
+//                isExpiryDateEmpty()
+//                isProductPriceEmpty()
+//                isFarmLocationEmpty()
+//                isImageNotSelected()
                 binding.productName.error = "Enter Product Name"
                 binding.productDescription.error = "Enter Product Description"
                 binding.harvestedDate.error = "Enter Harvested Date"
                 binding.expiryDate.error = "Enter Expiry Date"
                 binding.productPrice.error = "Enter Product Price"
+                binding.farmLocation.error = "Enter Farm Location"
+                binding.warningImgNotSelected.visibility = View.VISIBLE
             } else {
                 productInfo()
                 findNavController().navigate(
@@ -84,10 +104,11 @@ class FarmerListItemFragment : Fragment() {
             if(!farmerListItemViewModel.isManageStoragePermissionGranted(requireContext())){
                 requestPermission()
             }else{
+                _isImageImported = true
                 pickMedia.launch("image/*")
             }
         }
-        binding.farmLocation.setOnClickListener {
+        binding.detectLocation.setOnClickListener {
             if(!farmerListItemViewModel.checkLocationPermission()){
               requestPermissionLauncherForLocation.launch(Manifest.permission.ACCESS_FINE_LOCATION)
             }else{
@@ -144,8 +165,52 @@ class FarmerListItemFragment : Fragment() {
             .isEmpty() || binding.productDescription.text.toString()
             .isEmpty() || binding.harvestedDate.text.toString()
             .isEmpty() || binding.expiryDate.text.toString()
-            .isEmpty() || binding.productPrice.text.toString().isEmpty()
+            .isEmpty() || binding.productPrice.text.toString()
+            .isEmpty() || binding.farmLocation.text.toString().isEmpty() || !_isImageImported
     }
+
+    private fun isDescriptionEmpty(){
+        if(binding.productDescription.text.toString().isEmpty()){
+            binding.productNameInputLayout.error = "Enter Product Description"
+        }
+    }
+
+    private fun isProductNameEmpty(){
+        if(binding.productName.text.toString().isEmpty()){
+            binding.productNameInputLayout.error = "Enter Product Name"
+        }
+    }
+
+    private fun isHarvestedDateEmpty(){
+        if(binding.harvestedDate.text.toString().isEmpty()){
+            binding.harvestedDateInputLayout.error = "Enter Harvested Date"
+        }
+    }
+
+    private fun isExpiryDateEmpty(){
+        if(binding.expiryDate.text.toString().isEmpty()){
+            binding.expiryDateInputLayout.error = "Enter Expiry Date"
+        }
+    }
+
+    private fun isProductPriceEmpty(){
+        if(binding.productPrice.text.toString().isEmpty()){
+            binding.productPriceInputLayout.error = "Enter Product Price"
+        }
+    }
+
+    private fun isFarmLocationEmpty(){
+        if(binding.farmLocation.text.toString().isEmpty()){
+            binding.farmLocationInputLayout.error = "Enter Farm Location"
+        }
+    }
+
+    private fun isImageNotSelected(){
+        if(!_isImageImported){
+            binding.warningImgNotSelected.visibility = View.VISIBLE
+        }
+    }
+
 
     private fun productInfo() {
         val productName = binding.productName.text.toString()
@@ -195,6 +260,7 @@ class FarmerListItemFragment : Fragment() {
             "productPrice" to productPrice,
             "productType" to productType,
             "farmLocation" to farmLocation,
+            "dateInMillis" to dateInMillis,
             "ImageUri" to farmerListItemViewModel.getUri().toString(),
         )
 
@@ -216,11 +282,41 @@ class FarmerListItemFragment : Fragment() {
         }
     }
 
-    private fun getDatePicker(view:TextInputEditText) {
-        val datePicker = MaterialDatePicker.Builder.datePicker().build()
+    private fun getSeedingDate(view: TextInputEditText) {
+        val today = MaterialDatePicker.todayInUtcMilliseconds()
+        val constraintsBuilder = CalendarConstraints.Builder()
+        constraintsBuilder.setValidator(DateValidatorPointBackward.before(today))
+
+        val datePicker = MaterialDatePicker.Builder.datePicker()
+            .setCalendarConstraints(constraintsBuilder.build())
+            .setTitleText(R.string.select_planting_date)
+            .build()
+
         datePicker.show(parentFragmentManager, "DatePicker")
-        datePicker.addOnPositiveButtonClickListener {
-            view.setText(datePicker.headerText)
+        datePicker.addOnPositiveButtonClickListener { selection ->
+            if (selection != null) {
+                dateInMillis = selection
+                view.setText(datePicker.headerText)
+            }
+        }
+    }
+
+    private fun getExpiryDate(view: TextInputEditText) {
+        val today = MaterialDatePicker.todayInUtcMilliseconds()
+
+        val constraintsBuilder = CalendarConstraints.Builder()
+        constraintsBuilder.setValidator(DateValidatorPointForward.from(today))
+
+        val datePicker = MaterialDatePicker.Builder.datePicker()
+            .setCalendarConstraints(constraintsBuilder.build())
+            .setTitleText(R.string.select_expiry_date)
+            .build()
+
+        datePicker.show(parentFragmentManager, "DatePicker")
+        datePicker.addOnPositiveButtonClickListener { selection ->
+            if (selection != null) {
+                view.setText(datePicker.headerText)
+            }
         }
     }
 
