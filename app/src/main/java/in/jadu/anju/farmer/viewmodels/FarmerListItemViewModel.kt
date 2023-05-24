@@ -183,6 +183,7 @@ class FarmerListItemViewModel @Inject constructor(
             }
         } catch (e: HttpException) {
             e.printStackTrace()
+            Log.d("FarmerListItemViewModel", "createProductRemoteerror: ${e.message()}")
             viewModelScope.launch {
                 mainEventChannel.send(MainEvent.Error(e.message()))
             }

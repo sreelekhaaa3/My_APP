@@ -32,12 +32,11 @@ class ShipmentApprovalFragment : Fragment() {
         binding = FragmentShipmentApprovalBinding.inflate(layoutInflater,container,false)
         position = arguments?.getInt("position")
         loadProduct()
-        binding.confirmOrder.setOnClickListener {
-            binding.update.visibility = View.VISIBLE
-            binding.update.text = getString(`in`.jadu.anju.R.string.order_confirmed)
-        }
+
         binding.canelOrder.setOnClickListener {
             binding.update.visibility = View.VISIBLE
+            binding.canelOrder.visibility = View.GONE
+            binding.confirmOrder.visibility = View.GONE
             binding.update.text = getString(`in`.jadu.anju.R.string.order_cancelled)
         }
         return binding.root
@@ -80,7 +79,10 @@ class ShipmentApprovalFragment : Fragment() {
                     }
                     binding.confirmOrder.setOnClickListener {view->
                         farmerListItemViewModel.updateOrderStatus(productList._id.removeSurrounding("\""),productList.product[it].product._id.removeSurrounding("\""),"Approved")
-                        Toast.makeText(requireContext(), "Approved", Toast.LENGTH_SHORT).show()
+                        binding.update.visibility = View.VISIBLE
+                        binding.confirmOrder.visibility = View.GONE
+                        binding.canelOrder.visibility = View.GONE
+                        binding.update.text = getString(`in`.jadu.anju.R.string.order_confirmed)
                         Log.d("productListId",productList._id.removeSurrounding("\""))
                     }
                 }

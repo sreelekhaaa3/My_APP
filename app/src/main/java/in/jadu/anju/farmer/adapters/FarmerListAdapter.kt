@@ -41,6 +41,7 @@ class FarmerListAdapter(private val itemTypes: List<Product>,private val listene
         val itemListCardView:CardView = itemView.findViewById(R.id.item_list_card_view)
         val rl_product_parent:RelativeLayout = itemView.findViewById(R.id.ImageRelativeLayout)
         val imageCardView:CardView = itemView.findViewById(R.id.image_card_view)
+        val address:TextView = itemView.findViewById(R.id.farmer_location)
 
         init {
             itemView.setOnClickListener {

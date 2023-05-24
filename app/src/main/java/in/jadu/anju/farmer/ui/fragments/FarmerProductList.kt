@@ -70,7 +70,7 @@ class FarmerProductList : Fragment(),FarmerListAdapter.OnItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupMenu()
+//        setupMenu()
     }
 
 

@@ -17,6 +17,7 @@ class ReceivedOrderAdapter(private val listener: OnItemClickListener) : Recycler
     inner class ReceivedOrderViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         val productName: TextView = itemView.findViewById(R.id.cart_product_name_text)
         val ivProductImage: ImageView = itemView.findViewById(R.id.iv_product_image)
+        val delivery_text:TextView = itemView.findViewById(R.id.delivery_text)
         init {
             itemView.setOnClickListener {
                 val position = adapterPosition
@@ -38,9 +39,10 @@ class ReceivedOrderAdapter(private val listener: OnItemClickListener) : Recycler
 
     override fun onBindViewHolder(holder: ReceivedOrderViewHolder, position: Int) {
         val currentItem = receivedProduct?.product?.get(position)
-        holder.productName.text = currentItem?.product?.productName?.removeSurrounding("\"")
+        holder.productName.text = "ID: "+currentItem?._id?.removeSurrounding("\"")
         val imageLink = currentItem?.product?.productImageUrl?.removeSurrounding("\"")
             ?.let { getImageLink(it) }
+        holder.delivery_text.text= currentItem?.product?.productName?.removeSurrounding("\"")
         Glide.with(holder.itemView.context).load(imageLink).into(holder.ivProductImage)
     }
     private fun getImageLink(imgId: String): String {
