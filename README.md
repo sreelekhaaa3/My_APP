@@ -45,6 +45,7 @@ This is an Android project that connects farmers directly with consumers without
 **Database:** MongoDB, Firestore (Google cloud)
 
 **Other:** AMD instance (backend deployed)
+Backend Repository link: https://github.com/AkashSharma001/gfgServer
 
 
 ## Objective
