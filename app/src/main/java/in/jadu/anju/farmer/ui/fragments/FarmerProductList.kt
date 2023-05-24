@@ -50,10 +50,14 @@ class FarmerProductList : Fragment(),FarmerListAdapter.OnItemClickListener {
             Log.d("FarmerList",it.toString())
             if(it.isEmpty()){
                 binding.rvFarmerDashBoard.visibility = View.GONE
+                binding.productLoadingProgress.visibility = View.GONE
+                binding.lottieAnimationView.visibility = View.VISIBLE
+                binding.tvTitle.visibility = View.VISIBLE
             }else{
                 binding.lottieAnimationView.visibility = View.GONE
                 binding.tvTitle.visibility = View.GONE
                 binding.rvFarmerDashBoard.visibility = View.VISIBLE
+                binding.productLoadingProgress.visibility = View.GONE
                 itemListAdapter = FarmerListAdapter(it,this)
                 itemListRecyclerView.adapter = itemListAdapter
                 itemListAdapter.notifyDataSetChanged()
@@ -69,6 +73,7 @@ class FarmerProductList : Fragment(),FarmerListAdapter.OnItemClickListener {
         setupMenu()
     }
 
+
     private fun setupMenu() {
         (requireActivity() as MenuHost).addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -77,7 +82,7 @@ class FarmerProductList : Fragment(),FarmerListAdapter.OnItemClickListener {
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 if (menuItem.itemId == R.id.wallet){
-                    binding.loadwalletprogress.isVisible = true
+//                    binding.loadwalletprogress.isVisible = true
                     findNavController().navigate(R.id.action_farmerDashBoardFragment2_to_walletFragment)
                 }
                 if (menuItem.itemId == R.id.logout){

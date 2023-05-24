@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".consumer.ui.fragments.ConsumerProfileFragment">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="16dp"
+        android:src="@drawable/baseline_edit_24"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/userImage"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/rohit"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/userImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"
+        android:text="Hello John"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="18sp"
+        android:textColor="@color/primary_text_color"
+        />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3"
+        />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:cardElevation="0dp"
+        app:layout_constraintVertical_bias=".2"
+        app:layout_constraintTop_toBottomOf="@id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"
+        >
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp"
+            android:orientation="vertical"
+            >
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="4dp"
+                android:orientation="vertical"
+                >
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_orders"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/stroke_rectangular"
+                    android:text="@string/orders"
+                    android:layout_toEndOf="@id/btn_orders"
+                    android:textColor="@color/primary_text_color"
+                    android:layout_alignParentEnd="true"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/poppins"
+                    />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnWishList"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/stroke_rectangular"
+                    android:text="@string/wishlist"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/primary_text_color"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/poppins"
+                    android:layout_width="match_parent"
+
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnOffers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/stroke_rectangular"
+                    android:text="@string/offers"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@id/btn_orders"
+                    android:textColor="@color/primary_text_color"
+                    android:layout_alignParentEnd="true"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/poppins"
+                    />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnHelp"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/stroke_rectangular"
+                    android:text="@string/contact_us"
+                    android:textColor="@color/primary_text_color"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/poppins"
+                    />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/logout"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/stroke_rectangular"
+                    android:text="@string/logout"
+                    android:textColor="@color/primary_text_color"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/poppins"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="4dp"
+                >
+
+
+
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <!--    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="32dp"
+            style="@style/TextInputTheme"
+            app:layout_constraintTop_toBottomOf="@id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:hint="Name"
+            app:helperText="*Required"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/ErrorColor"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_text_input_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_phoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="8dp"
+            style="@style/TextInputTheme"
+            app:layout_constraintTop_toBottomOf="@id/text_input_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:hint="@string/phone_number"
+            app:helperText="*Required"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/ErrorColor"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_text_input_phoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

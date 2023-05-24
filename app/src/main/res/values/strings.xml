@@ -95,6 +95,29 @@
     <string name="retryDownload">Retry</string>
     <string name="processing">Processing…</string>
     <string name="qr_downloaded">QR Code downloaded successfully</string>
+    <string name="product_details">Product Details</string>
+    <string name="seeding_date">Seeding Date :</string>
+    <string name="price_text">Price :</string>
+    <string name="product_journey">Product Journey</string>
+    <string name="order_preview">Order Preview</string>
+    <string name="harvested_manufactured">Harvested/Manufactured :</string>
+    <string name="processing_facility">Processing Facility :</string>
+    <string name="packaging_facility">Packaging Facility :</string>
+    <string name="total_orders_received">Total Orders Received :</string>
+    <string name="order_analysis">Order Analysis</string>
+    <string name="last_purchased">Last Purchased :</string>
+    <string name="shipment_location">Shipment Location</string>
+    <string name="payment_status">Payment Status</string>
+    <string name="in_transit">In Transit</string>
+    <string name="product_quantity">Quantity:</string>
+    <string name="orders">New Orders</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="offers">Created Offers</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="logout">Logout</string>
+    <string name="order_details">Confirmed</string>
+    <string name="order_confirmed">Order Confirmed</string>
+    <string name="order_cancelled">Order Cancelled</string>
 
 
 </resources>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/cart_item_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="10dp"
+        app:cardElevation="0dp"
+        android:background="@drawable/stroke_rectangular"
+        app:cardCornerRadius="5dp">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/rl_product_img_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_product_image"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/vegetables"
+                    app:shapeAppearanceOverlay="@style/customRounded4Corner" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/cart_product_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/vegetables"
+                    android:textColor="@color/primary_text_color"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/rl_product_img_name"
+                >
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/delivery_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="Delivery Excepted by Tomorrow"
+                    android:textColor="@color/primary_text_color"
+                    android:textSize="12sp" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/cart_product_name_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/delivery_text"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="1 kg"
+                    android:textColor="@color/hint_text_color_dark_ui"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_keyboard_arrow_right_24"
+                    />
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</RelativeLayout>

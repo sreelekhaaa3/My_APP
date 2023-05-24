@@ -7,7 +7,7 @@ import java.util.Date
 import java.util.Locale
 import java.util.TimeZone
 
-class AppUtils{
+object AppUtils{
     fun convertLongDate(date: Long): String {
         val dateProcess = Date(date * 1000L) // Convert Unix timestamp to Date object
         val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()) // Define date format

@@ -4,6 +4,7 @@ import `in`.jadu.anju.farmer.models.dtos.FarmerAuth
 import `in`.jadu.anju.farmer.models.dtos.ListItemTypes
 import `in`.jadu.anju.farmer.models.dtos.Product
 import `in`.jadu.anju.farmer.models.dtos.RemoteListTypeBackend
+import `in`.jadu.anju.farmer.models.dtos.RequestedProduct
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.Response
@@ -36,5 +37,11 @@ interface FarmerApiService {
         @Part("sellerPhoneNo") sellerPhoneNoPart: RequestBody
     )
 
+    @GET("/api/seller/{phoneNo}/orders")
+    suspend fun receiveRequestedProduct(@Path("phoneNo") phoneNo: String): retrofit2.Response<RequestedProduct>
+
+    //api/:orderID/:productId/updateStatus
+    @PUT("/api/order/{orderID}/{productId}/updateStatus")
+    suspend fun updateStatus(@Path("orderID") orderID: String,@Path("productId") productId: String,@Body status: String)
 
 }

@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/fragment_phone_verification"
         android:name="in.jadu.anju.commonuis.PhoneVerificationFragment"
-        android:label="phoneVerfication"
+        android:label="Phone Details"
         tools:layout="@layout/fragment_phone_verification">
         <action
             android:id="@+id/action_phoneVerfication_to_confirmOtpFragment"
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/confirmOtpFragment"
         android:name="in.jadu.anju.commonuis.ConfirmOtpFragment"
-        android:label="fragment_confirmotp"
+        android:label="Confirm OTP"
         tools:layout="@layout/fragment_confirmotp">
         <action
             android:id="@+id/action_confirmOtpFragment_to_farmerDashboard"
@@ -29,7 +29,7 @@
     <fragment
         android:id="@+id/selectLanguage"
         android:name="in.jadu.anju.commonuis.SelectLanguageFragment"
-        android:label="SelectLanguage">
+        android:label="Setup Language">
         <action
             android:id="@+id/action_selectLanguage_to_fragment_phone_verification"
             app:destination="@id/fragment_phone_verification"
@@ -59,7 +59,7 @@
     <fragment
         android:id="@+id/farmerListItemFragment2"
         android:name="in.jadu.anju.farmer.ui.fragments.FarmerListItemFragment"
-        android:label="fragment_farmer_list_item"
+        android:label="List Item"
         tools:layout="@layout/fragment_farmer_list_item" >
         <action
             android:id="@+id/action_farmerListItemFragment2_to_farmerPreviewItemListFragment2"
@@ -68,7 +68,7 @@
     <fragment
         android:id="@+id/farmerPreviewItemListFragment2"
         android:name="in.jadu.anju.farmer.ui.fragments.FarmerPreviewItemListFragment"
-        android:label="fragment_farmer_preview_item_list"
+        android:label="Preview Item"
         tools:layout="@layout/fragment_farmer_preview_item_list" >
         <action
             android:id="@+id/action_farmerPreviewItemListFragment2_to_successListingFragment"
@@ -83,7 +83,7 @@
     <fragment
         android:id="@+id/successListingFragment"
         android:name="in.jadu.anju.farmer.ui.fragments.SuccessListingFragment"
-        android:label="fragment_success_listing"
+        android:label="Listed"
         tools:layout="@layout/fragment_success_listing" >
         <action
             android:id="@+id/action_successListingFragment_to_farmerDashBoardFragment2"
@@ -94,7 +94,7 @@
     <fragment
         android:id="@+id/walletFragment"
         android:name="in.jadu.anju.farmer.ui.fragments.WalletFragment"
-        android:label="WalletFragment" >
+        android:label="Wallet" >
         <action
             android:id="@+id/action_walletFragment_to_walletConnectFragment"
             app:destination="@id/walletConnectFragment"
@@ -104,7 +104,7 @@
     <fragment
         android:id="@+id/walletConnectFragment"
         android:name="in.jadu.anju.farmer.ui.fragments.WalletConnectFragment"
-        android:label="fragment_wallet_connect"
+        android:label="create Wallet"
         tools:layout="@layout/fragment_wallet_connect" >
         <action
             android:id="@+id/action_walletConnectFragment_to_walletFragment"
@@ -115,7 +115,7 @@
     <fragment
         android:id="@+id/farmerDashboard"
         android:name="in.jadu.anju.farmer.ui.fragments.FarmerDashboard"
-        android:label="FarmerDashboard" >
+        android:label="Home" >
         <action
             android:id="@+id/action_farmerDashboard_to_farmerProductList"
             app:destination="@id/farmerProductList" />
@@ -128,15 +128,42 @@
         <action
             android:id="@+id/action_farmerDashboard_to_allOrdersFragment"
             app:destination="@id/allOrdersFragment" />
+        <action
+            android:id="@+id/action_farmerDashboard_to_newOrderReceiveFragment"
+            app:destination="@id/newOrderReceiveFragment" />
+        <action
+            android:id="@+id/action_farmerDashboard_to_farmerProfileFragment"
+            app:destination="@id/farmerProfileFragment" />
+        <action
+            android:id="@+id/action_farmerDashboard_to_selectLanguage"
+            app:destination="@id/selectLanguage"
+            app:popUpTo="@id/farmerDashboard"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/allOrdersFragment"
         android:name="in.jadu.anju.farmer.ui.fragments.AllOrdersFragment"
-        android:label="fragment_all_orders"
+        android:label="All Orders"
         tools:layout="@layout/fragment_all_orders" />
     <fragment
         android:id="@+id/productDetails"
         android:name="in.jadu.anju.farmer.ui.fragments.ProductDetails"
-        android:label="fragment_product_details"
+        android:label="Product Details"
         tools:layout="@layout/fragment_product_details" />
+    <fragment
+        android:id="@+id/newOrderReceiveFragment"
+        android:name="in.jadu.anju.farmer.ui.fragments.NewOrderReceiveFragment"
+        android:label="New Orders" >
+        <action
+            android:id="@+id/action_newOrderReceiveFragment_to_shipmentApprovalFragment"
+            app:destination="@id/shipmentApprovalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shipmentApprovalFragment"
+        android:name="in.jadu.anju.farmer.ui.fragments.ShipmentApprovalFragment"
+        android:label="Order Details" />
+    <fragment
+        android:id="@+id/farmerProfileFragment"
+        android:name="in.jadu.anju.farmer.ui.fragments.FarmerProfileFragment"
+        android:label="Profile" />
 </navigation>

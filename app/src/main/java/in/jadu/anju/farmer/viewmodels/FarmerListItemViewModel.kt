@@ -4,6 +4,8 @@ import android.Manifest
 import android.app.Application
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.location.Address
 import android.location.Geocoder
 import android.net.Uri
@@ -18,12 +20,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.lifecycle.HiltViewModel
 import `in`.jadu.anju.farmer.models.dtos.ListItemTypes
 import `in`.jadu.anju.farmer.models.dtos.Product
+import `in`.jadu.anju.farmer.models.dtos.RequestedProduct
 import `in`.jadu.anju.farmer.models.local.LocalDataInterface
 import `in`.jadu.anju.farmer.models.repository.FarmerRepository
 import kotlinx.coroutines.Dispatchers
@@ -62,8 +68,12 @@ class FarmerListItemViewModel @Inject constructor(
     val getFarmerListData: LiveData<List<Product>>
         get() = _getFarmerListData
 
+    private val _getRequestedProductListData = MutableLiveData<RequestedProduct>()
+    val getRequestedProductListData: LiveData<RequestedProduct>
+        get() = _getRequestedProductListData
     init {
         setupBouncyCastle()
+        getOrderReceivedList(auth.currentUser?.phoneNumber!!.substring(3))
     }
 
     val getItems = LocalDataRepository.getListItemByPhoneNumber("")
@@ -128,6 +138,22 @@ class FarmerListItemViewModel @Inject constructor(
         }
     }
 
+    fun getOrderReceivedList(phoneNo:String) = viewModelScope.launch(Dispatchers.IO) {
+        try {
+            val response = farmerRepository.receiveRequestedProduct(phoneNo)
+            if (response.isSuccessful) {
+                Log.d("FarmerListItemViewModel", "getFarmerItemList: ${response.body()}")
+                _getRequestedProductListData.postValue(response.body())
+
+            }
+        } catch (e: HttpException) {
+            e.printStackTrace()
+            viewModelScope.launch {
+                mainEventChannel.send(MainEvent.Error(e.message()))
+            }
+        }
+    }
+
     fun createProductRemote(
         productType: String,
         productName: String,
@@ -163,6 +189,25 @@ class FarmerListItemViewModel @Inject constructor(
         }
 
     }
+
+    fun updateOrderStatus(orderId:String,productId:String,status:String){
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                farmerRepository.updateStatus(orderId,productId,status)
+                viewModelScope.launch {
+                    mainEventChannel.send(MainEvent.Success("Order Status Updated Successfully"))
+                }
+            } catch (e: HttpException) {
+                e.printStackTrace()
+                Log.d("FarmerListItemViewModel", "updateOrderStatus: ${e.message()}")
+                viewModelScope.launch {
+                    mainEventChannel.send(MainEvent.Error(e.message()))
+                }
+            }
+        }
+    }
+
+
 
     suspend fun insertListItemTypes(listItemTypes: ListItemTypes) =
         viewModelScope.launch(Dispatchers.IO) {
@@ -245,5 +290,25 @@ class FarmerListItemViewModel @Inject constructor(
             )
             return result == PackageManager.PERMISSION_GRANTED
         }
+    }
+
+    fun getImageBitmap(context: Context, imgUrl: String, callback: (Bitmap?) -> Unit) {
+        Glide.with(context)
+            .asBitmap()
+            .load(imgUrl)
+            .into(object : CustomTarget<Bitmap>() {
+                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                    callback(resource)
+                }
+
+                override fun onLoadCleared(placeholder: Drawable?) {
+                    // Optional: handle when the resource is cleared
+                }
+            })
+    }
+    fun getImageLink(imgId: String): String {
+        val baseUrl = "https://firebasestorage.googleapis.com/v0/b/productserver-57d88.appspot.com/"
+        val imagePath = "o/$imgId?alt=media"
+        return baseUrl + imagePath
     }
 }

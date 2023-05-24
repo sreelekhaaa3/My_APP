@@ -118,7 +118,7 @@ class SuccessListingFragment : Fragment() {
             msg,
             Snackbar.LENGTH_LONG
         )
-        snackBar.setTextColor(ContextCompat.getColor(requireContext(), R.color.primary_text_color))
+        snackBar.setTextColor(ContextCompat.getColor(requireContext(), R.color.surface))
         snackBar.setBackgroundTint(ContextCompat.getColor(requireContext(), R.color.primary_text_color))
         snackBar.show()
     }

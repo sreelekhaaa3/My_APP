@@ -14,6 +14,8 @@
     <color name="inverse_icon_color">#000000</color>
     <color name="btn_color">#5C94E2</color>
     <color name="hint_text_color_dark_ui">#C4C7C5</color>
+    <color name="light_black">#e8e8e8</color>
+
     <color name="ErrorColor">#F2B8B5</color>
     <color name="whitedull">#121212</color>
     <color name="lightBlue">#2859A5D8</color>

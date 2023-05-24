@@ -37,4 +37,6 @@ class FarmerRepository @Inject constructor(private val farmerApiService: FarmerA
             phone,
             RequestBody.create("text/plain".toMediaTypeOrNull(), phone)
     )
+    suspend fun receiveRequestedProduct(phoneNo: String) = farmerApiService.receiveRequestedProduct(phoneNo)
+    suspend fun updateStatus(orderID: String,productId: String,status: String) = farmerApiService.updateStatus(orderID,productId,status)
 }

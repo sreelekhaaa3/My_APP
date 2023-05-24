@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,17 +8,20 @@
 
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/item_list_card_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="4dp"
-            android:layout_margin="10dp"
-            app:cardElevation="4dp"
+            android:layout_height="0dp"
+            app:cardCornerRadius="16dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            app:cardElevation="2dp"
             >
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                >
                 <RelativeLayout
-                    android:id="@+id/rl_product_img_name"
+                    android:id="@+id/ImageRelativeLayout"
                     android:layout_width="wrap_content"
                     android:padding="5dp"
                     android:layout_centerHorizontal="true"
@@ -31,20 +34,22 @@
                         app:cardCornerRadius="20dp"
                         app:cardElevation="0dp">
 
-                        <androidx.appcompat.widget.AppCompatImageView
+                        <com.google.android.material.imageview.ShapeableImageView
                             android:id="@+id/iv_vegetables"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_margin="5dp"
+                            app:shapeAppearanceOverlay="@style/customRoundedImageView"
                             android:scaleType="centerCrop"
                             android:src="@drawable/vegetables" />
 
                     </androidx.cardview.widget.CardView>
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/productName"
+                        android:id="@+id/test"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:fontFamily="@font/poppins"
                         android:layout_below="@id/image_card_view"
                         android:layout_centerHorizontal="true"
@@ -60,34 +65,41 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
-                    android:layout_below="@id/rl_product_img_name"
+                    android:layout_below="@id/ImageRelativeLayout"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     >
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tv_product_type"
+                        android:id="@+id/productName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
                         android:text="vegis"
-                        android:visibility="gone"
-                        android:layout_marginStart="4dp"
-                        android:drawablePadding="4dp"
-                        android:drawableStart="@drawable/tag"
-                        android:fontFamily="@font/poppins"
                         android:textColor="@color/primary_text_color"
+                        android:visibility="visible"
+                        app:fontFamily="@font/poppins_extrabold" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/farmer_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/productName"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="@font/poppins"
+                        android:textColor="@color/hint_text_color_dark_ui"
+                        android:text="Kolkata, West Bengal"
                         />
+
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/farmer_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="₹40/kg"
-                        android:layout_below="@id/tv_product_type"
-                        android:fontFamily="@font/lato_bold"
-                        android:layout_marginTop="8dp"
+                        android:layout_below="@id/farmer_location"
                         android:layout_marginStart="16dp"
-                        android:textColor="@color/primary_text_color"
-                        />
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="₹40/kg"
+                        android:textColor="@color/primary_text_color" />
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/expiry_tag"
                         android:layout_width="wrap_content"
@@ -117,10 +129,11 @@
                         android:layout_height="wrap_content"
                         android:text="15-04-2023"
                         android:textSize="12sp"
-                        android:fontFamily="@font/lato_bold"
+                        android:fontFamily="@font/poppins_medium"
                         android:layout_below="@id/expiry_tag"
                         android:layout_marginTop="4dp"
                         android:layout_marginStart="16dp"
+                        app:fontFamily="@font/poppins_semibold"
                         android:textColor="@color/primary_text_color"
                         />
 
@@ -147,7 +160,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:visibility="gone"
-                    android:layout_toEndOf="@id/rl_product_img_name"
+                    android:layout_toEndOf="@id/ImageRelativeLayout"
                     android:text="@string/description"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
@@ -175,4 +188,4 @@
         </androidx.cardview.widget.CardView>
 
 
-</RelativeLayout>
+</LinearLayout>
