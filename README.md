@@ -1,7 +1,7 @@
 
 ## Problem
 The Indian agricultural sector is plagued by several challenges, including the lack of a direct market for farmers to sell their produce. Farmers often have to sell their produce to intermediaries at low prices, leading to lower profits. Consumers, on the other hand, have limited access to fresh produce at reasonable prices due to the involvement of intermediaries in the supply chain.
-## Solution
+## Solution (Working [Demo](https://youtu.be/hxqonoBUqmc))
 * Develop an Android app that connects [farmers](https://github.com/Rohit-554/GFG-AnJu/releases/tag/1.0) directly with [consumers](https://github.com/Rohit-554/GFG-AnJuConsumerApp/releases) without any intermediaries.
 * Provide a platform for farmers to list their produce by uploading images, quantity, and price, and for consumers to purchase fresh produce directly from farmers.
 * Use blockchain technology to ensure that all transactions are secure and transparent, with both farmers and consumers having their own wallets to carry out transactions.
@@ -61,36 +61,45 @@ The project has been successful in achieving its objectives.
 
 <h3> Login Signup Uis </h3>
 <p align = "left">
-<img src = https://user-images.githubusercontent.com/48874687/232320931-93c6830d-1960-4afe-b706-261041e9574e.jpg width = "200" height = "400">
-<img src = https://user-images.githubusercontent.com/48874687/232320932-502893bd-56af-4ed8-8553-22f3544019b9.jpg width = "200" height = "400">
-<img src = https://user-images.githubusercontent.com/48874687/232320938-1168efce-016c-4ed3-b7b4-19f0ac59e052.jpg width = "200" height = "400">
-<img src = https://user-images.githubusercontent.com/48874687/232320946-0d0a71f9-d766-4346-9f19-7d2802df9e4e.jpg width = "200" height = "400">
+<img src = https://user-images.githubusercontent.com/48874687/232320931-93c6830d-1960-4afe-b706-261041e9574e.jpg width = "200" height = "430">
+<img src = https://user-images.githubusercontent.com/48874687/232320932-502893bd-56af-4ed8-8553-22f3544019b9.jpg width = "200" height = "430">
+<img src = https://user-images.githubusercontent.com/48874687/232320938-1168efce-016c-4ed3-b7b4-19f0ac59e052.jpg width = "200" height = "430">
+<img src = https://user-images.githubusercontent.com/48874687/232320946-0d0a71f9-d766-4346-9f19-7d2802df9e4e.jpg width = "200" height = "430">
  </p>
  <br>
  <h3> Payments and Wallets </h3>
  <p align = "left">
-<img src = https://user-images.githubusercontent.com/48874687/232320927-4dbba766-4b89-4c1b-b000-a55e7834f0de.jpg width = "200" height = "400">
-<img src = https://user-images.githubusercontent.com/48874687/232320949-1ffede75-a965-4c39-8a16-962eda240092.jpg width = "200" height = "400">
-<img src = https://user-images.githubusercontent.com/48874687/232321021-59a2bb11-ee28-4f0e-9e83-b6a9fb1106a0.jpg  width = "200" height = "400">
-<img src = https://user-images.githubusercontent.com/48874687/232321026-42153dc7-2128-4553-b74f-c3e5f6f608a0.jpg  width = "200" height = "400">
+<img src = https://user-images.githubusercontent.com/48874687/232320927-4dbba766-4b89-4c1b-b000-a55e7834f0de.jpg width = "200" height = "430">
+<img src = https://user-images.githubusercontent.com/48874687/232320949-1ffede75-a965-4c39-8a16-962eda240092.jpg width = "200" height = "430">
+<img src = https://user-images.githubusercontent.com/48874687/232321021-59a2bb11-ee28-4f0e-9e83-b6a9fb1106a0.jpg  width = "200" height = "430">
+<img src = https://user-images.githubusercontent.com/48874687/232321026-42153dc7-2128-4553-b74f-c3e5f6f608a0.jpg  width = "200" height = "430">
 </p>
 <br>
-<h3> Farmer App (Switched to dark Mode) </h3>
+<h3> Farmer App (Dark + White) </h3>
  <p align = "left">
- <img src = https://user-images.githubusercontent.com/48874687/232320988-111fe011-c6d5-4198-9207-15e448c40064.jpg  width = "200" height = "400">
-<img src = https://user-images.githubusercontent.com/48874687/232320953-92e0051d-b881-4652-b8df-d7e279d0d057.jpg  width = "200" height = "400">
-<img src = https://user-images.githubusercontent.com/48874687/232320964-bfc4fc80-82bc-43ce-af23-a73f7b67660d.jpg  width = "200" height = "400">
-<img src = https://user-images.githubusercontent.com/48874687/232320974-d7dc1341-f161-40c8-b531-58de6e9f99b9.jpg  width = "200" height = "400">
-<img src = https://user-images.githubusercontent.com/48874687/232320981-6b31fe16-b3a3-4781-8a15-b3267672f06b.jpg  width = "200" height = "400">
+<img src = https://user-images.githubusercontent.com/48874687/232320988-111fe011-c6d5-4198-9207-15e448c40064.jpg  width = "200" height = "430">
+<img src = https://github.com/Rohit-554/GFG-Agrichain-Farmer/assets/48874687/2f0c3be3-8337-44e8-861e-c400a260c2d1  width = "200" height = "430">
+<img src = https://github.com/Rohit-554/GFG-Agrichain-Farmer/assets/48874687/494c2960-db4e-4481-ad53-cf489a3e6a45  width = "200" height = "430">
+<img src = https://user-images.githubusercontent.com/48874687/232320974-d7dc1341-f161-40c8-b531-58de6e9f99b9.jpg  width = "200" height = "430">
+<img src = https://github.com/Rohit-554/GFG-Agrichain-Farmer/assets/48874687/0a06c02d-e8a8-49a5-96d9-af66bbab2237  width = "200" height = "430">
+ <img src = https://github.com/Rohit-554/GFG-Agrichain-Farmer/assets/48874687/023cd8bb-b24b-4f0a-bd11-9fb0d64d4025  width = "200" height = "430">
 </p>
+
+
+
+
+
+
 <br>
 <h3> Consumer App (Support dark Mode too)</h3>
- <p align = "left">
-<img src = https://user-images.githubusercontent.com/48874687/232321000-2f358b9b-ab92-4840-90ef-9ca47d676d05.jpg  width = "200" height = "400">
-<img src = https://user-images.githubusercontent.com/48874687/232323265-98fe986d-fda4-41f5-8536-e3e9eba03089.jpg  width = "200" height = "400">
-<img src = https://user-images.githubusercontent.com/48874687/232323275-6b90e755-11a4-4fa9-8f83-f6e3f1f5cf2d.jpg  width = "200" height = "400">
-
+<p align = "left">
+<img src = https://github.com/Rohit-554/GFG-Agrichain-Farmer/assets/48874687/2e9d7f35-b805-4ca7-9d5f-5249cc8e120c  width = "200" height = "430">
+<img src = https://github.com/Rohit-554/GFG-Agrichain-Farmer/assets/48874687/d3d2e3e9-615a-42a0-b3e2-f723a47f9374  width = "200" height = "430">
+<img src = https://github.com/Rohit-554/GFG-Agrichain-Farmer/assets/48874687/d29160ca-cf78-4779-8f45-66b812b31e72  width = "200" height = "430">
+<img src = https://github.com/Rohit-554/GFG-Agrichain-Farmer/assets/48874687/3fc0d28d-b8b6-46ee-a144-c10d768d5f79 width = "200" height = "430">
 </p>
+
+
 
 
 ## Downloads 
@@ -145,7 +154,7 @@ The project has been successful in achieving its objectives.
   We welcome feedback from our users. You can provide your feedback by sending us an email at [chandel.s.aman@gmail.com]. We will take your feedback into consideration to improve our services.
 </details>
 
-<h2> Team Jadx </h2>
+<h2> Team Three </h2>
 <table>
   <tr>
     <td align="center"><a href="https://github.com/chandel-aman"><img src="https://avatars.githubusercontent.com/u/97614113?v=4" width="100px;" alt=""/><br /><sub><b>Aman Chandel <br> (UiDesigns and Backend) </b></sub></a><br /><a href="" title="Code">💻</a></td>
